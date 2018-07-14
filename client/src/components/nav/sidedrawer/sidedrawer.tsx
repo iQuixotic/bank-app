@@ -1,19 +1,24 @@
-// import React from "react";
+import * as React from "react";
 
-// import {
-//     NavItems,
-// } from '../../../components'
+import {
+    NavItems,
+} from '../../../components'
 
-// import './style.css';
 
-// const Sidedrawer = (props) => {
-//     return (
-//         <div className='Sidedrawer'>            
-//             <nav>
-//                 <NavItems bottom='true' />
-//             </nav>
-//         </div>
-//     );
-// }
+interface IProps {
+    children: any,
+}
 
-// export default Sidedrawer;
+import './style.css';
+
+const Sidedrawer = (props: IProps) => {
+    return (
+        <div className='Sidedrawer'>            
+            <nav>
+                <NavItems />
+            </nav>
+        </div>
+    );
+}
+
+export default Sidedrawer;
