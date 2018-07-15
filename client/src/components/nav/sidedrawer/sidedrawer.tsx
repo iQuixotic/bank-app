@@ -2,7 +2,7 @@ import * as React from "react";
 
 import {
     NavItems,
-} from '../../../components'
+} from '../../../components';
 
 
 interface IProps {
@@ -15,7 +15,9 @@ const Sidedrawer = (props: IProps) => {
     return (
         <div className='Sidedrawer'>            
             <nav>
-                <NavItems />
+                <NavItems 
+                nav1="Accounts"
+                />
             </nav>
         </div>
     );

@@ -5,20 +5,28 @@ import {
 } from '../../../components'
 
 interface IProps {
-    children: string,
+    children?: string,
 }
 
 import './style.css';
 
 const Toolbar = (props: IProps) => {
     return (
-        <div className='Toolbar'>            
-            <nav>
-                Hello
-                <NavItems/>
-                {props.children}
-            </nav>
-        </div>
+        <nav className='Toolbar'>
+            <div className="Toolbar-Main">
+                Zenith Holdings
+            </div>
+
+            <div className="Toolbar-Nav">
+                <NavItems
+                    nav1="Accounts"
+                    nav2="VIP"
+                    nav3="New"
+                />
+            </div>
+
+            {props.children}
+        </nav>
     );
 }
 

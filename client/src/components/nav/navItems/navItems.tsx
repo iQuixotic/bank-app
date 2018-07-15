@@ -1,24 +1,25 @@
 import * as React from "react";
 
-import './style.css';
-
 interface IProps {
-    children?: string,    
+    nav1: string,
+    nav2?: string,
+    nav3?: string,
+    nav4?: string,
+    nav5?: string,
 }
+
+import './style.css';
 
 
 const NavItems = (props: IProps) => {
     return (
-        <div className='NavItems'>            
-            <nav>
-                <ul className='NavItems-UL'>
-                    <li className='NavItems-LI'>Accouts</li>
-                    <li className='NavItems-LI'>VIP</li>
-                    <li className='NavItems-LI'>New</li>           
-                    <li className='NavItems-LI'>Previous</li>                             
-                </ul>
-            </nav>
-        </div>
+        <ul className='NavItems'>
+            <li className='NavItems-LI'>{props.nav1}</li>      
+            <li className='NavItems-LI'>{props.nav2}</li>        
+            <li className='NavItems-LI'>{props.nav3}</li>        
+            <li className='NavItems-LI'>{props.nav4}</li>        
+            <li className='NavItems-LI'>{props.nav5}</li>                                
+        </ul>
     );
 }
 

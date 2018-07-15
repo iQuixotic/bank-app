@@ -1,0 +1,17 @@
+.Toolbar {
+    top: 0;
+    left: 0;
+    color: white;
+    background: rgb(13, 42, 105);
+    height: 100px;
+}
+
+.Toolbar-Main {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.Toolbar-Nav {
+    width: 30%;
+    float: right;
+}

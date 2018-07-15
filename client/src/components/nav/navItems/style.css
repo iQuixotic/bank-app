@@ -1,0 +1,20 @@
+.NavItems {
+    font-size: 2.0rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.NavItems-LI {
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Permanent Marker', cursive;
+    box-sizing: border-box;
+    /* height: 45px; */
+    float: left;
+    /* width: 100%; */
+}
+
+/* .NavItems-LI a {
+
+} */

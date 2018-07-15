@@ -1,22 +1,22 @@
 
-import React, { Component } from "react";
+import * as React from "react";
 
 // // import components
 import { 
-    NavItems
+  Container,
+  Toolbar,
  } from "../../components";
 
 // // import containers
-// import {
+import { 
+  Account,
+} from "../../containers";
 
-// } from "../../containers";
-
-import '../../master/main.css';
 import './style.css';
 
 
-class Main extends Component {
-  state = {
+class Main extends React.Component {
+  public state = {
   }
 
 
@@ -31,11 +31,13 @@ class Main extends Component {
 // formSubmitHandler = () => {
 // }
  
-  render() {
+  public render() {
     return (
       <div className='Main'>
-        <NavItems />
-        Hellos from the main page !!
+        <Toolbar />
+          <Container>
+            <Account />
+          </Container>
       </div>
     );
   }
