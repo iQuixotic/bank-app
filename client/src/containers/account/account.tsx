@@ -31,35 +31,71 @@ class Account extends React.Component {
         </Row>
 
         <Row>
-
+          <Col size="md-5">
+          <Row>
           <div className="Account_Row-Space">
             <Col size="md-5">
-              <div className='Account_Balance'>
-                Balance: <span id='Balance'>$1,678.98</span>
-              </div>
-            </Col>
-
-
-
-            <Col size="md-7">          
-            <Row>             
-              <Input
-                itype='input'
-                label='Add Funds'
-              />
-              <button className="Account_Add-Funds btn">+</button>
-            </Row>
-
-            <Row>                
-              <Input
-                itype='input'
-                label='Subtract Funds'
-              />
-              <button className="Account_Subtract-Funds btn">-</button>
-            </Row>
+              <Row>
+                <div className='Account_Balance'>
+                  Balance: <span id='Balance'>$1,678.98</span>
+                </div>
+              </Row>
+              <Row>
+                <div className="Account_Payed-To">
+                <Input
+                  itype='input'
+                  label='Payed To/From'
+                  labelFor='payedFrom'
+                />
+                </div>
+               
+              </Row>
             </Col>
           </div>
         </Row>
+
+          </Col>
+          <Col size="md-7">
+              <Row>
+                <Col size='md-8'>
+                  <Input
+                    itype='input'
+                    label='Add Funds'
+                    labelFor='add'
+                  />                                
+                </Col>
+                <Col size='md-1'/>  
+                <Col size='md-3'>
+                <div className="padd-down">                  
+                  <button className="Account_Add-Funds btn">+</button>
+                </div>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col size='md-8'>
+                  <Input
+                    itype='input'
+                    label='Subtract Funds'
+                    labelFor='subtract'
+                  />
+                </Col>
+                <Col size='md-1'/>
+
+                <Col size='md-3'>
+                <div className="padd-down">                  
+                  <button className="Account_Subtract-Funds btn">-</button>
+                </div>
+                </Col>
+              </Row>
+            </Col>
+
+
+
+        </Row>
+
+       
+
 
 
       </div>

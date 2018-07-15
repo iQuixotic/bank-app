@@ -3,7 +3,9 @@ import './style.css';
 
 interface IProps {
     itype: string,
-    label: string
+    label: string,
+    labelFor: string,
+    required?: boolean
 }
 
 const Input = (props: IProps) => {
@@ -11,10 +13,10 @@ const Input = (props: IProps) => {
 
     switch (props.itype) {
         case ('input'):
-            inputElement = <input type='text' className='Input-Element' {...props}/>
+            inputElement = <input type='text' required={true} name={props.labelFor} className='Input-Element' {...props}/>
             break;
         case ('textarea'):
-            inputElement = <textarea className='Input-Element' {...props}/>
+            inputElement = <textarea name={props.labelFor} className='Input-Element' {...props}/>
             break;
         case ('radio'):
             inputElement = <input type='radio' className='Input-Element' {...props}/>
@@ -28,8 +30,8 @@ const Input = (props: IProps) => {
 
         return(
             <div id='Input'>
-                <label className='Label'>{props.label}</label>
                 {inputElement}
+                <label className='Label' htmlFor={props.labelFor}>{props.label}</label>
             </div>
         );
 }

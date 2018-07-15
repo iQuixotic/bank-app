@@ -2,7 +2,7 @@ import * as React from "react";
 
 interface IProps {
     size: string,
-    children: any
+    children?: any
 }
 
 const Col = (props: IProps ) => {

@@ -1,56 +1,73 @@
 .Account {
-    font-size: 2em;
+    font-size: 2rem;
     margin-top: 170px;
+    height: 20rem;
     display: flex;
     padding: 1rem;
 }
 
 .Account_Name {
-    padding: 3rem 4rem;
+    padding: 1rem 4rem ;
     font-weight: bolder;
     width: 30%;
 }
 
 .Account_Number {
-    padding: 3rem 0;    
+    padding: 1rem 0;    
     font-weight: bold;
     width: 65%;
 }
 
 .Account_Delete {
-    padding-bottom: 4rem; 
     font-size: 3rem;
     float: right;
     color: red;
 }
 
 .Account_Balance {
-    padding: 0px 2.5rem;
+    position: fixed;
+    z-index: 2;
+    padding: 2rem 4rem 0;
     font-size: 2rem;    
     font-weight: bold;
 }
 
 .Account_Add-Funds,
 .Account_Subtract-Funds {
-    font-size: 2.5rem;
-    font-weight: 700;
-    padding:0px;
-    width: 4rem;
-    height: 4rem;
+    font-size: 2rem;
+    font-weight: 900;
+    width: 5rem;
+    height: 2rem;
     margin: 0 4rem;
+    padding-bottom: 3rem;
     background-color: rgb(133, 148, 212);
+    float: center;
 }
 
-.Account_Add-Funds {
+.padd-down {
+    padding-top: 2rem;
+}
+
+.Account_Add-Funds {    
+    margin: 1rem 0 0 0;    
     color: green;
 }
 
+.Account_Payed-To {
+    
+    position: fixed;
+    z-index: 2;
+    width: 33%;
+    margin-top: 1.5rem;
+    padding: 3rem;
+}
+
 .Account_Subtract-Funds {
+    margin: 1rem 0 0 0;    
     color: red;
 }
 
 .Account_Row-Space {
-    height: 10rem;
     width: 100%;
     display: flex;
 }

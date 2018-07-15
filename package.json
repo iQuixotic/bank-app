@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/iQuixotic/my-bank-app/issues"
   },
-  "homepage": "https://github.com/iQuixotic/my-bank-app#readme"
+  "homepage": "https://github.com/iQuixotic/my-bank-app#readme",
+  "dependencies": {
+    "float-label-css": "^1.0.2"
+  }
 }
