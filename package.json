@@ -4,8 +4,13 @@
   "description": "a full-stack, mobile-first app for managing an imaginary bank's credit and debits",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "go": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,11 @@
   },
   "homepage": "https://github.com/iQuixotic/my-bank-app#readme",
   "dependencies": {
-    "float-label-css": "^1.0.2"
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7"
   }
 }
