@@ -1,5 +1,5 @@
 # Zenith Holdings
-a full-stack, mobile-first app for managing an imaginary bank's credit and debits
+This project is a MERN, full-stack, mobile-responsive app for managing an imaginary bank's credit and debits.
 
 <hr>
 

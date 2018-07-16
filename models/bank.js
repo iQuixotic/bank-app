@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 let BankSchema = new Schema({
 
     name: {
-        Last: {
+        last: {
             type: String,
         },
-        First: {
+        first: {
             type: String,
         }
     },

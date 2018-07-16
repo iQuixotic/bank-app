@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/iQuixotic/my-bank-app#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
     "cors": "^2.8.4",
