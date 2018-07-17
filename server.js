@@ -40,7 +40,7 @@ app.use((error, req, res, next) => {
 // connect to the database bank_db on the server
 mongoose.connect(connectMe);
 mongoose.Promise = global.Promise;
-
+// , { useNewUrlParser: true }
 // - - - - - - - - - - - - - - - - - - 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

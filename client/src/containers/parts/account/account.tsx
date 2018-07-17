@@ -4,7 +4,13 @@ import * as React from "react";
 // // import components
 import {
   Col, Input, Row,
-} from "../../components";
+} from "../../../components";
+
+
+// import {
+//   API, IVAL
+// } from "../../../utils";
+
 
 // interface IState {
 //   creditsDebits: object,
@@ -15,8 +21,6 @@ import {
 // }
 
 import './style.css';
-
-
 
 
 class Account extends React.Component<{
@@ -34,6 +38,7 @@ class Account extends React.Component<{
 
   constructor(props: any) {
     super(props);
+    this.inputChangeHandler = this.inputChangeHandler.bind(this);
     this.state = {
       _id: this.props._id,
       addInput: 4,
@@ -44,10 +49,10 @@ class Account extends React.Component<{
   }
 
 public inputChangeHandler = (e: any) => {
-  console.log(e.target.value);
   this.setState({
-    
+    [e.target.name]: e.target.value
   })
+  console.log(this.state);  
 }
 
 public addHandler = () => {
@@ -60,6 +65,8 @@ public subtractHandler = () => {
 
   public render() {
     return (
+      // Account component is each box meant 
+      // to hold its own state on the main page
       <div className='card Account'>
         <Row>
           <span className='Account_Name'>{this.props.nameLast}, {this.props.nameFirst}</span>
@@ -69,6 +76,7 @@ public subtractHandler = () => {
             className="Account_Delete">X</span>
         </Row>
 
+      {/* Account Balance */}
         <Row>
           <Col size="md-5">
             <Row>
@@ -76,14 +84,16 @@ public subtractHandler = () => {
                 Balance: <span id='Balance'>${this.props.balance}</span>
               </div>
             </Row>
+
+          {/* Payed to/from begins here */}
             <Row>
               <div className="Account_Payed-To">
                 <Input
-                  id={`payed-to${this.props._id}`}                  
+                  id={this.props._id}                  
                   onChange={this.inputChangeHandler}                  
                   itype='input'
                   label='Payed To/From'
-                  labelfor='payedFrom'
+                  labelfor='payToInput'
                 />
               </div>
 
@@ -91,41 +101,44 @@ public subtractHandler = () => {
           </Col>
           <Col size='md-1' />
           <Col size="md-6">
+
+          {/* Add funds begins here */}
             <Row>
               <Col size='md-8'>
                 <Input
-                  id={`input-add${this.props._id}`}
+                  id={this.props._id}
                   onChange={this.inputChangeHandler}                  
                   itype='input'
                   label='Add Funds'
-                  labelfor='add'
+                  labelfor='addInput'
                 />
               </Col>
               <Col size='md-1' />
               <Col size='md-3'>
                 <div className="padd-down">
-                  <button id={`button-add${this.props._id}`}
+                  <button id={this.props._id}
                   onClick={this.addHandler}
                   className="Account_Add-Funds btn">+</button>
                 </div>
               </Col>
             </Row>
 
+          {/* Subtract funds begins here */}
             <Row>
               <Col size='md-8'>
                 <Input
-                  id={`input-subtract${this.props._id}`}
+                  id={this.props._id}
                   onChange={this.inputChangeHandler}
                   itype='input'
                   label='Subtract Funds'
-                  labelfor='subtract'
+                  labelfor='subtractInput'
                 />
               </Col>
               <Col size='md-1' />
               <Col size='md-3'>
                 <div className="padd-down">
                   <button 
-                  id={`button-subtract${this.props._id}`}
+                  id={this.props._id}
                   onClick={this.subtractHandler}
                   className="Account_Subtract-Funds btn">-</button>
                 </div>

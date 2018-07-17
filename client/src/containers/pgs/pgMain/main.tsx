@@ -5,16 +5,17 @@ import * as React from "react";
 import {
   Container,
   Toolbar,
-} from "../../components";
+} from "../../../components";
 
 // import containers
 import {
   Account,
-} from "../../containers";
+} from "../../../containers";
 
+// import utils
 import {
   API,
-} from "../../utils";
+} from "../../../utils";
 
 import './style.css';
 
@@ -74,7 +75,7 @@ class Main extends React.Component {
         <Toolbar />
         <Container>
           {this.state.allAccts.map(each => (
-              <Account
+              <Account key={each._id}
                 nameFirst={each.name.first}
                 nameLast={each.name.last}
                 acctNum={each.acct}
