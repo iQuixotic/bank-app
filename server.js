@@ -1,27 +1,23 @@
+// external
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 
-// database and app
+// database and app (internal)
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const connectMe = process.env.MONGODB_URI || 'mongodb://localhost/bank_db'; 
-
-// internal files
-// const routes = require('./routes');
 const db = require('./models');
+const routes = require('./routes');
 
-// use morgan, bodyParser, and cors
+// use morgan, bodyParser, cors, routes
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
- 
-// use routes
-// app.use(routes);
+app.use(routes);
 
 // - - - - - - - - - - - - - - - - - - 
 // error handling
@@ -54,3 +50,6 @@ if (process.env.NODE_ENV === "production") {
 app.listen(PORT, function() {
   console.log("Server listening on: http://localhost:" + PORT);
 });
+ 
+// const seed = require('./seeds/seeds');
+// seed.generate();

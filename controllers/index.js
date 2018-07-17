@@ -1,4 +1,4 @@
-module.exports = {
-    personal: require('./personal'),
-    admin: require('./administrative'),
-}
+// module.exports = {
+//     personal: require('./personal'),
+//     admin: require('./administrative'),
+// }

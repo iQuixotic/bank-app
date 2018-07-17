@@ -1,7 +1,7 @@
 .Account {
     font-size: 2rem;
     margin-top: 170px;
-    height: 20rem;
+    height: 24rem;
     display: flex;
     padding: 1rem;
 }
@@ -25,8 +25,6 @@
 }
 
 .Account_Balance {
-    position: fixed;
-    z-index: 2;
     padding: 2rem 4rem 0;
     font-size: 2rem;    
     font-weight: bold;
@@ -54,12 +52,8 @@
 }
 
 .Account_Payed-To {
-    
-    position: fixed;
-    z-index: 2;
-    width: 33%;
-    margin-top: 1.5rem;
-    padding: 3rem;
+    width: 150%;
+    padding: 0 3rem;
 }
 
 .Account_Subtract-Funds {

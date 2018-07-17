@@ -1,4 +1,4 @@
-const router = require('express-router');
+const router = require('express').Router();
 const personalController = require('../controllers/personal');
 
 // CRUD for an individual account

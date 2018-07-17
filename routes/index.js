@@ -1,10 +1,11 @@
-const router = require('express')();
-const admin = require('./administrative');
-const personal = require('./personal');
+const path = require("path");
+const router = require('express').Router();
+const adminRoutes = require('./administrative');
+const personalRoutes = require('./personal');
 
-// api Routes
-router.use(admin);
-router.use(personal);
+// tell the application when to use these routes
+router.use('/admin', adminRoutes);
+router.use('/personal', personalRoutes);
 
 // if no routes are hit, go to react app
 router.use(function(req, res) {

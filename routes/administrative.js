@@ -1,11 +1,11 @@
-const router = require('express')();
+const router = require("express").Router();
 const adminController = require('../controllers/administrative');
 
 // for getting all data
-router.route('/allAccountsData')
-    .get(adminController.read)
+router.route('/') 
+    .get(adminController.read);
 
-router.route('allAccountsData/:id')
+router.route('/:id')
     .delete(adminController.erase)
     
 module.exports = router;

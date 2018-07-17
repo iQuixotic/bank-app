@@ -7,27 +7,46 @@ import {
 } from "../../components";
 
 interface IState {
-  hasInput: boolean
+  creditsDebits: object,
+  _id: any,
 }
 
 import './style.css';
 
 
-class Account extends React.Component {
+
+
+class Account extends React.Component <{  
+  _id: any;
+  acctNum: number;
+  click?: any;
+  balance: number;
+  nameFirst: string;
+  nameLast: string; 
+ 
+}> {
   public state: IState = {
-    hasInput: true,
+    _id: this.props._id,
+    creditsDebits: {},   
   }
 
-
-
+  constructor(props: any) {
+    super(props);   
+    this.state = {
+      _id: this.props._id,
+      creditsDebits: {},
+    }
+  }
 
   public render() {
     return (
       <div className='card Account'>
         <Row>
-          <span className='Account_Name'>Warrick, Trey</span>
-          <span className='Account_Number'>8949504</span>
-          <span className="Account_Delete">X</span>
+          <span className='Account_Name'>{this.props.nameLast}, {this.props.nameFirst}</span>
+          <span className='Account_Number'>{this.props.acctNum}</span>
+          <span id={this.props._id} 
+            onClick={this.props.click} 
+            className="Account_Delete">X</span>
         </Row>
 
         <Row>
@@ -37,7 +56,7 @@ class Account extends React.Component {
             <Col size="md-5">
               <Row>
                 <div className='Account_Balance'>
-                  Balance: <span id='Balance'>$1,678.98</span>
+                  Balance: <span id='Balance'>${this.props.balance}</span>
                 </div>
               </Row>
               <Row>
@@ -45,7 +64,7 @@ class Account extends React.Component {
                 <Input
                   itype='input'
                   label='Payed To/From'
-                  labelFor='payedFrom'
+                  labelfor='payedFrom'
                 />
                 </div>
                
@@ -61,7 +80,7 @@ class Account extends React.Component {
                   <Input
                     itype='input'
                     label='Add Funds'
-                    labelFor='add'
+                    labelfor='add'
                   />                                
                 </Col>
                 <Col size='md-1'/>  
@@ -77,7 +96,7 @@ class Account extends React.Component {
                   <Input
                     itype='input'
                     label='Subtract Funds'
-                    labelFor='subtract'
+                    labelfor='subtract'
                   />
                 </Col>
                 <Col size='md-1'/>
