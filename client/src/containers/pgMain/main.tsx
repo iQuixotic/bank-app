@@ -42,7 +42,7 @@ class Main extends React.Component {
         acct: 0,
         balance: 0,
         name: {
-          first: 'Na',
+          first: 'NA',
           last: 'NA'
         },
       }],

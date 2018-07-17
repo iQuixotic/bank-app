@@ -1,8 +1,6 @@
 .Account {
     font-size: 2rem;
-    margin-top: 170px;
     height: 24rem;
-    display: flex;
     padding: 1rem;
 }
 
@@ -19,7 +17,6 @@
 }
 
 .Account_Delete {
-    font-size: 3rem;
     float: right;
     color: red;
 }
@@ -43,7 +40,7 @@
 }
 
 .padd-down {
-    padding-top: 2rem;
+    padding-top: 2.8rem;
 }
 
 .Account_Add-Funds {    
@@ -52,18 +49,13 @@
 }
 
 .Account_Payed-To {
-    width: 150%;
+    width: 100%;
     padding: 0 3rem;
 }
 
 .Account_Subtract-Funds {
     margin: 1rem 0 0 0;    
     color: red;
-}
-
-.Account_Row-Space {
-    width: 100%;
-    display: flex;
 }
 
 #Balance {

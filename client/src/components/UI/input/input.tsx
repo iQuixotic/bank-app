@@ -2,10 +2,12 @@ import * as React from "react";
 import './style.css';
 
 interface IProps {
+    id?: string,
     itype: string,
     label: string,
     labelfor: string,
-    required?: boolean
+    required?: boolean,
+    onChange?: any
 }
 
 const Input = (props: IProps) => {
@@ -13,7 +15,11 @@ const Input = (props: IProps) => {
 
     switch (props.itype) {
         case ('input'):
-            inputElement = <input type='text' placeholder={props.label} required={true} name={props.labelfor} className='Input-Element' {...props}/>
+            inputElement = <input type='text' 
+            id={props.id}
+            placeholder={props.label} 
+            required={true} name={props.labelfor} 
+            className='Input-Element' {...props}/>
             break;
         case ('textarea'):
             inputElement = <textarea name={props.labelfor} className='Input-Element' {...props}/>
