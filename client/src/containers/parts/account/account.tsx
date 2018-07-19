@@ -1,27 +1,28 @@
 
 import * as React from "react";
 
-// // import components
+// import components
 import {
   Col, Input, Row,
 } from "../../../components";
 
+import {
+  // API,
+   IVAL,
+    // MONEY
+} from "../../../utils";
 
-// import {
-//   API, IVAL
-// } from "../../../utils";
-
-
-// interface IState {
-//   creditsDebits: object,
-//   _id: any,
-//   addInput: number | void;  
-//   payToInput: string;
-//   subtractInput: number | void;
-// }
 
 import './style.css';
 
+interface IState {
+  _id: any,
+  addInput: number,
+  balance: number,
+  creditsDebits: any,
+  payToInput: string,
+  subtractInput: number
+}
 
 class Account extends React.Component<{
   _id: any;
@@ -31,39 +32,82 @@ class Account extends React.Component<{
   nameFirst: string;
   nameLast: string;
 }> {
-  // public state: IState = {
-  //   _id: this.props._id,
-  //   creditsDebits: {},    
-  // }
-
-  constructor(props: any) {
+  public state: IState;  
+  public constructor(props: any) {
     super(props);
-    this.inputChangeHandler = this.inputChangeHandler.bind(this);
+    this.numInputHandler = this.numInputHandler.bind(this);
+    this.isNumber = this.isNumber.bind(this)
     this.state = {
       _id: this.props._id,
       addInput: 4,
-      creditsDebits: {},       
+      balance: this.props.balance,
+      creditsDebits: 0,       
       payToInput: '', 
       subtractInput: 5,  
     }
   }
 
-public inputChangeHandler = (e: any) => {
+// -----------------------------------
+// only allow numbers and .'s in number input field
+public isNumber = (e:any) => {
+  const char = (e.which)
+  char < 48 && char !== 46 || char > 58 && char !== 46 ? 
+  e.preventDefault() :
+  console.log('')
+}
+
+public numFormatHandler = (e: any) => {
+  console.log('d')
+}
+
+// -----------------------------------
+public numInputHandler = (e: any) => {  
+  console.log(e.target.name)
+  console.log(parseFloat(e.target.value))
+  const myFixed = parseFloat(e.target.value).toFixed(2)
+  console.log(parseFloat(myFixed))
+  
+  console.log(78.58474)
+  console.log(78.58474.toFixed(2))  
   this.setState({
-    [e.target.name]: e.target.value
+    [e.target.name]: parseFloat(myFixed)
   })
-  console.log(this.state);  
+  this.checkState();
+}
+  
+// -----------------------------------
+// if payToInput box
+public stringInputHandler = (name: any, val: any) => {
+  IVAL.isAString(val) ?
+  console.log('id say its a string') :
+  console.log('id say its not')
+  IVAL.lengthCheck(val)
+  IVAL.uppercaseEditor(val)
 }
 
-public addHandler = () => {
-  console.log('add')
+// ----------------------------------- 
+// button click handlers
+public addClickHandler = () => {
+  this.setState({
+    balance: this.state.balance + this.state.addInput
+  })
 }
 
-public subtractHandler = () => {
-  console.log('subtract')
+
+public subtractClickHandler = () => {
+  this.setState({
+    balance: this.state.balance - this.state.subtractInput
+  })
+}
+
+// -----------------------------------
+
+public checkState = () => {
+  console.log(this.state)
 }
 
   public render() {
+
     return (
       // Account component is each box meant 
       // to hold its own state on the main page
@@ -81,7 +125,7 @@ public subtractHandler = () => {
           <Col size="md-5">
             <Row>
               <div className='Account_Balance'>
-                Balance: <span id='Balance'>${this.props.balance}</span>
+                Balance: <span id='Balance'>${(this.state.balance).toFixed(2)}</span>
               </div>
             </Row>
 
@@ -89,8 +133,9 @@ public subtractHandler = () => {
             <Row>
               <div className="Account_Payed-To">
                 <Input
+                  type='text'
                   id={this.props._id}                  
-                  onChange={this.inputChangeHandler}                  
+                  // onChange={this.originDecider}                  
                   itype='input'
                   label='Payed To/From'
                   labelfor='payToInput'
@@ -106,18 +151,20 @@ public subtractHandler = () => {
             <Row>
               <Col size='md-8'>
                 <Input
+                  type='number'
                   id={this.props._id}
-                  onChange={this.inputChangeHandler}                  
+                  onChange={this.numInputHandler}                  
                   itype='input'
                   label='Add Funds'
                   labelfor='addInput'
+                  keyPress={this.isNumber}
                 />
               </Col>
               <Col size='md-1' />
               <Col size='md-3'>
                 <div className="padd-down">
                   <button id={this.props._id}
-                  onClick={this.addHandler}
+                  onClick={this.addClickHandler}
                   className="Account_Add-Funds btn">+</button>
                 </div>
               </Col>
@@ -127,11 +174,13 @@ public subtractHandler = () => {
             <Row>
               <Col size='md-8'>
                 <Input
+                  type="number"
                   id={this.props._id}
-                  onChange={this.inputChangeHandler}
+                  onChange={this.numInputHandler}
                   itype='input'
                   label='Subtract Funds'
                   labelfor='subtractInput'
+                  keyPress={this.isNumber}
                 />
               </Col>
               <Col size='md-1' />
@@ -139,7 +188,7 @@ public subtractHandler = () => {
                 <div className="padd-down">
                   <button 
                   id={this.props._id}
-                  onClick={this.subtractHandler}
+                  onClick={this.subtractClickHandler}
                   className="Account_Subtract-Funds btn">-</button>
                 </div>
               </Col>

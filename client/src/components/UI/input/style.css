@@ -2,8 +2,7 @@
     padding: 1rem;
 }
 
-.Input-Element {
-    
+.Input-Element {    
     font-size: 1.6rem;
     margin: 3rem 0 0 0;
     width: 100%;
@@ -18,6 +17,14 @@
 input:focus::-webkit-input-placeholder {
     color:transparent;
 }
+/* 
+input:invalid {
+    background-color: rgb(250, 232, 232);
+}
+
+input:valid { 
+    background-color: rgb(255, 255, 255);
+} */
 
 input:focus + label, 
 input:valid + label {
@@ -28,6 +35,13 @@ input:valid + label {
     color: rgb(49, 64, 199);
 } 
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
 
 @keyframes moveUp {
     0% {

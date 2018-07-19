@@ -7,7 +7,10 @@ interface IProps {
     label: string,
     labelfor: string,
     required?: boolean,
-    onChange?: any
+    onChange?: any,
+    type: string,
+    pattern?: any,
+    keyPress?: any
 }
 
 const Input = (props: IProps) => {
@@ -15,11 +18,17 @@ const Input = (props: IProps) => {
 
     switch (props.itype) {
         case ('input'):
-            inputElement = <input type='text' 
+            inputElement = <input 
+            type={props.type} 
+            pattern={props.pattern}
             id={props.id}
             placeholder={props.label} 
-            required={true} name={props.labelfor} 
-            className='Input-Element' {...props}/>
+            required={true} 
+            name={props.labelfor} 
+            className='Input-Element' 
+            onChange={props.onChange}
+            onKeyPress={props.keyPress}
+            />
             break;
         case ('textarea'):
             inputElement = <textarea name={props.labelfor} className='Input-Element' {...props}/>
