@@ -7,7 +7,7 @@ import {
 } from "../../../components";
 
 import {
-  // API,
+  API,
    IVAL,
     // MONEY
 } from "../../../utils";
@@ -19,7 +19,7 @@ interface IState {
   _id: any,
   addInput: number,
   balance: number,
-  creditsDebits: any,
+  dataCD: object,
   payToInput: string,
   subtractInput: number
 }
@@ -27,6 +27,7 @@ interface IState {
 class Account extends React.Component<{
   _id: any;
   acctNum: number;
+  balChange?:any;
   click?: any;
   balance: number;
   nameFirst: string;
@@ -41,7 +42,10 @@ class Account extends React.Component<{
       _id: this.props._id,
       addInput: 4,
       balance: this.props.balance,
-      creditsDebits: 0,       
+      dataCD: {
+        credit: 0,
+        debit: 0
+      },       
       payToInput: '', 
       subtractInput: 5,  
     }
@@ -62,17 +66,10 @@ public numFormatHandler = (e: any) => {
 
 // -----------------------------------
 public numInputHandler = (e: any) => {  
-  console.log(e.target.name)
-  console.log(parseFloat(e.target.value))
   const myFixed = parseFloat(e.target.value).toFixed(2)
-  console.log(parseFloat(myFixed))
-  
-  console.log(78.58474)
-  console.log(78.58474.toFixed(2))  
   this.setState({
     [e.target.name]: parseFloat(myFixed)
   })
-  this.checkState();
 }
   
 // -----------------------------------
@@ -87,24 +84,28 @@ public stringInputHandler = (name: any, val: any) => {
 
 // ----------------------------------- 
 // button click handlers
-public addClickHandler = () => {
-  this.setState({
+public addClickHandler = async () => {
+  const data: any =  {
+    _id: this.state._id,
     balance: this.state.balance + this.state.addInput
+  }
+  API.updateBalance(data, data._id)
+  await this.setState({
+  balance: data.balance
   })
 }
 
-
-public subtractClickHandler = () => {
-  this.setState({
+public subtractClickHandler = async () => {
+  const data: any =  {
+    _id: this.state._id,
     balance: this.state.balance - this.state.subtractInput
+  }
+  API.updateBalance(data, data._id)
+  await this.setState({
+  balance: data.balance
   })
 }
-
 // -----------------------------------
-
-public checkState = () => {
-  console.log(this.state)
-}
 
   public render() {
 
@@ -125,7 +126,8 @@ public checkState = () => {
           <Col size="md-5">
             <Row>
               <div className='Account_Balance'>
-                Balance: <span id='Balance'>${(this.state.balance).toFixed(2)}</span>
+                Balance: <span id='Balance'>
+                ${(this.state.balance).toFixed(2)}</span>
               </div>
             </Row>
 

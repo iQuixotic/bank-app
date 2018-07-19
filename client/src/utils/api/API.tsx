@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 interface IRoutes {
-    data: object,
+    data: any,
     id: string
 }
 
@@ -15,8 +15,14 @@ export default {
         return axios.get('/admin');
     },
 
+    // UPDATE the balance of one account
+    updateBalance: (data:IRoutes, id: IRoutes) => {
+        console.log('API route for updating balance hit');
+        return axios.post('/admin/' + id, data);
+    },
+
     // DELETE one account from database
-    removeAccount: (data: IRoutes, id: IRoutes) => {
+    removeAccount: (id: IRoutes) => {
         console.log('API route /allAccountsData/:id hit');        
         return axios.delete('/admin/' + id);
     },

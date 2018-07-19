@@ -5,7 +5,9 @@ const adminController = require('../controllers/administrative');
 router.route('/') 
     .get(adminController.read);
 
+// by id
 router.route('/:id')
     .delete(adminController.erase)
+    .post(adminController.update)
     
 module.exports = router;

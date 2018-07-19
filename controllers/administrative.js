@@ -12,6 +12,17 @@ module.exports = {
         .catch(err => res.json(err))
     },
 
+      // update an account's balance
+      update: function(req, res) {
+        console.log('update balance controller hit');
+        console.log(req.params.id);
+        console.log(req.body);
+        db.Bank
+          .findByIdAndUpdate(req.params.id, {balance: req.body.balance})
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.json(err))
+      },
+
    // delete an entire account from the record
     erase: function(req, res) {
       console.log('admin erase route hit')

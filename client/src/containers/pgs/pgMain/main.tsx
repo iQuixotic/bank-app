@@ -30,6 +30,7 @@ interface IState {
     },
   }],
   deleteID: string,
+  thisBal: number
 }
 
 
@@ -37,6 +38,7 @@ class Main extends React.Component {
   public state: IState;
   public constructor(props: any) {
     super(props);
+    // this.balUpdate = this.balUpdate.bind(this)
     this.state = {
       allAccts: [{             
         _id: 'NA',  
@@ -48,11 +50,20 @@ class Main extends React.Component {
         },
       }],
       deleteID: 'none yet supplied',
+      thisBal: 0,
     }
     this.componentWillMount = () => {
       this.getAllAccts();
     }
   }
+
+  // public balUpdate = (e: any) => {
+  //   console.log('my bal')
+  //   console.log(e)
+  //   // this.setState({
+  //   //   thisBal: this.state.balPassed
+  //   // })
+  // }
 
   public getAllAccts = () => {
     API.grabAccounts()
@@ -68,7 +79,6 @@ class Main extends React.Component {
     });
   }
 
-
   public render() {
     return (
       <div className='Main'>
@@ -82,6 +92,7 @@ class Main extends React.Component {
                 balance={each.balance}
                 _id={each._id}
                 click={this.deleteAcctHandler}
+                // balChange={this.balUpdate}
               />
               )
             )
