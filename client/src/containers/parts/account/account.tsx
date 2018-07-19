@@ -8,7 +8,7 @@ import {
 
 import {
   API,
-   IVAL,
+  //  IVAL,
     // MONEY
 } from "../../../utils";
 
@@ -40,14 +40,14 @@ class Account extends React.Component<{
     this.isNumber = this.isNumber.bind(this)
     this.state = {
       _id: this.props._id,
-      addInput: 4,
+      addInput: 0,
       balance: this.props.balance,
       dataCD: {
         credit: 0,
         debit: 0
       },       
       payToInput: '', 
-      subtractInput: 5,  
+      subtractInput: 0,  
     }
   }
 
@@ -74,37 +74,56 @@ public numInputHandler = (e: any) => {
   
 // -----------------------------------
 // if payToInput box
-public stringInputHandler = (name: any, val: any) => {
-  IVAL.isAString(val) ?
-  console.log('id say its a string') :
-  console.log('id say its not')
-  IVAL.lengthCheck(val)
-  IVAL.uppercaseEditor(val)
+public stringInputHandler = () => {
+  if(this.state.payToInput !== "") {
+    return true
+  }
+  return false;
+  // IVAL.isAString() ?
+  // console.log('id say its a string') :
+  // console.log('id say its not')
+  // IVAL.lengthCheck(val)
+  // IVAL.uppercaseEditor(val)
+}
+
+public stringChangeHandler = (e: any) => {
+  this.setState({
+    payToInput: e.target.value
+  })
 }
 
 // ----------------------------------- 
 // button click handlers
 public addClickHandler = async () => {
+  this.stringInputHandler() && !isNaN(this.state.addInput) && this.state.addInput > 0 ?
+  this.submitHandler('credit', this.state.addInput) :
+  console.log(this.state.addInput);  
+}
+
+public subtractClickHandler = async () => {  
+  this.stringInputHandler() && !isNaN(this.state.subtractInput) && this.state.subtractInput > 0 ?
+  this.submitHandler('debit', -this.state.subtractInput) :
+  console.log(-this.state.subtractInput);  
+}
+
+public submitHandler = async (cORd: string, arg: number) => {
   const data: any =  {
     _id: this.state._id,
-    balance: this.state.balance + this.state.addInput
+    balance: this.state.balance + arg
+  }
+  const trans: any =  {
+    ammount: arg,
+    party: this.state.payToInput,
+    type: cORd
   }
   API.updateBalance(data, data._id)
+  console.log(trans)
+  API.updateOneEntry(trans, data._id)
   await this.setState({
   balance: data.balance
   })
 }
 
-public subtractClickHandler = async () => {
-  const data: any =  {
-    _id: this.state._id,
-    balance: this.state.balance - this.state.subtractInput
-  }
-  API.updateBalance(data, data._id)
-  await this.setState({
-  balance: data.balance
-  })
-}
 // -----------------------------------
 
   public render() {
@@ -137,7 +156,7 @@ public subtractClickHandler = async () => {
                 <Input
                   type='text'
                   id={this.props._id}                  
-                  // onChange={this.originDecider}                  
+                  onChange={this.stringChangeHandler}                  
                   itype='input'
                   label='Payed To/From'
                   labelfor='payToInput'

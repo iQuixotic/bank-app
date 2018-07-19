@@ -44,7 +44,7 @@ export default {
     // UPDATE one account with a new credit/debit
     updateOneEntry: (data: IRoutes, id: IRoutes) => {
         console.log('API route /account/:id UPDATE hit');        
-        return axios.post('/personal/account/' + id);
+        return axios.post('/personal/account/' + id, data);
     },
 
     // DELETE one credit/debit entry from one account
