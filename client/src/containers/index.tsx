@@ -5,5 +5,6 @@ export { default as Account } from './parts/account/account';
 
 
 // export * from pgs
+export { default as Add } from './pgs/pgAdd/addPg';
 export { default as Main } from './pgs/pgMain/main';
 

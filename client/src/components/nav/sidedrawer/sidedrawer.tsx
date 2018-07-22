@@ -6,7 +6,7 @@ import {
 
 
 interface IProps {
-    children: any,
+    children?: any,
 }
 
 import './style.css';
@@ -16,7 +16,7 @@ const Sidedrawer = (props: IProps) => {
         <div className='Sidedrawer'>            
             <nav>
                 <NavItems 
-                nav1="Accounts"
+                nav1="Accounts" link1='/'
                 />
             </nav>
         </div>

@@ -19,9 +19,9 @@ const Toolbar = (props: IProps) => {
 
             <div className="Toolbar-Nav">
                 <NavItems
-                    nav1="Accounts"
+                    nav1="Accounts" link1='/'
                     nav2="VIP"
-                    nav3="New"
+                    nav3="New" link3='/new'
                 />
             </div>
 
