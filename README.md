@@ -10,7 +10,7 @@ This project is a MERN, full-stack, mobile-responsive app for managing an imagin
 | --- | --- | --- |
 Javascript | backend language | use with mongoDB, less initial setup than typescript (small back-end), |
 nodejs | used for backend js | *NA* |
-Typescript| front-end language | To take advantage of stronger typing in a react project  |
+Typescript| front-end language | To take advantage of stronger typing while learning various performance optimizations in a react project  |
 React | library | component-based architecture |
 MongoDB | database | rapid prototype for small project |
-yarn | package manager | *NA* |
+yarn | package manager of choice | *NA* |

@@ -2,25 +2,18 @@
 import * as React from "react";
 
 // // import components
-import {
-  Container,
-  Toolbar,
-} from "../../../components";
+import { Container, Toolbar } from "../../../components";
 
 // import containers
-import {
-  Account,
-} from "../../../containers";
+import { Account } from "../../../containers";
 
 // import utils
-import {
-  API,
-} from "../../../utils";
+import { API } from "../../../utils";
 
 import './style.css';
 
 interface IState {
-  allAccts: [{        
+  allAccts: [{
     _id: string,
     acct: number,
     balance: number,
@@ -38,10 +31,9 @@ class Main extends React.Component {
   public state: IState;
   public constructor(props: any) {
     super(props);
-    // this.balUpdate = this.balUpdate.bind(this)
     this.state = {
-      allAccts: [{             
-        _id: 'NA',  
+      allAccts: [{
+        _id: 'NA',
         acct: 0,
         balance: 0,
         name: {
@@ -56,14 +48,6 @@ class Main extends React.Component {
       this.getAllAccts();
     }
   }
-
-  // public balUpdate = (e: any) => {
-  //   console.log('my bal')
-  //   console.log(e)
-  //   // this.setState({
-  //   //   thisBal: this.state.balPassed
-  //   // })
-  // }
 
   public getAllAccts = () => {
     API.grabAccounts()
@@ -81,24 +65,25 @@ class Main extends React.Component {
 
   public render() {
     return (
+
       <div className='Main'>
         <Toolbar />
         <Container>
           {this.state.allAccts.map(each => (
-              <Account key={each._id}
-                nameFirst={each.name.first}
-                nameLast={each.name.last}
-                acctNum={each.acct}
-                balance={each.balance}
-                _id={each._id}
-                click={this.deleteAcctHandler}
-                // balChange={this.balUpdate}
-              />
+            < Account key = { each._id }
+                nameFirst = { each.name.first }
+                nameLast = { each.name.last }
+                acctNum = { each.acct }
+                balance = { each.balance }
+                _id = { each._id }
+                delClick = { this.deleteAcctHandler }
+            />
               )
             )
           }
         </Container>
       </div>
+
     );
   }
 }

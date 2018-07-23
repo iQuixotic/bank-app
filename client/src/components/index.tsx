@@ -1,5 +1,9 @@
 
 // export * from structure
+export { default as Account } from './structure/account/account';
+export { default as Header } from './structure/account/header/header';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 export { default as Col } from './structure/grid/col';
 export { default as Container } from './structure/grid/container';
 export { default as Row } from './structure/grid/row';

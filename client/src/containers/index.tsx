@@ -1,8 +1,10 @@
 
-// export * from parts
-export { default as Account } from './parts/account/account';
-// export { default as Balance } from './parts/account/balance/balance';
 
+// export * from hoc 
+// export { default as Loader } from './hoc/loader/spinWheel';
+
+// export * from partials
+export { default as Account } from './partials/accountLogic/accountLogic';
 
 // export * from pgs
 export { default as Add } from './pgs/pgAdd/addPg';

@@ -1,0 +1,20 @@
+.Header {
+    width: 98%;
+}
+
+.Header_Name {
+    padding: 1rem 4rem ;
+    font-weight: bolder;
+    width: 30%;
+}
+
+.Header_Number {
+    padding: 1rem 0;    
+    font-weight: bold;
+    width: 65%;
+}
+
+.Header_Delete {
+    float: right;
+    color: red;
+}
