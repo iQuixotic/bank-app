@@ -77,6 +77,7 @@ class Main extends React.Component {
                 balance = { each.balance }
                 _id = { each._id }
                 delClick = { this.deleteAcctHandler }
+                allAcctsLength={this.state.allAccts.length}
             />
               )
             )

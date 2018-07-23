@@ -1,13 +1,28 @@
-// import * as React from "react";
+import * as React from "react";
 
-// import './style.css';
+import './style.css';
 
-// const Loader = (WrappedComponent: any) => {
-//     return class Loader extends React.Component {
-//         render() {
-//             return <WrappedComponent {...this.props} />
-//         }
-//     }
-// }
+interface IState {
+    allAcctsLen?: any
+}
 
-// export default Loader;
+const Loader: any = (WrappedComponent: any) => {
+    return class LoaderHOC extends React.Component <{allAcctsLength: any}>{
+        public state: IState;
+        public constructor(props: any) {
+            super(props);
+            this.state = {
+                allAcctsLen: this.props.allAcctsLength,
+            }
+        }
+        public render() {
+            return (
+                this.state.allAcctsLen < 2 ?
+                <div className="Loader"><div/><div/><div/><div/><div/><div/><div/><div/></div> : 
+                <WrappedComponent  {...this.props} />
+            )            
+        }
+    }
+}
+ 
+export default Loader;

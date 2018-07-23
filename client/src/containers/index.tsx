@@ -1,7 +1,7 @@
 
 
 // export * from hoc 
-// export { default as Loader } from './hoc/loader/spinWheel';
+export { default as Loader } from './hoc/loader/spinWheel';
 
 // export * from partials
 export { default as Account } from './partials/accountLogic/accountLogic';

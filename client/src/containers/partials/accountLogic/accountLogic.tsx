@@ -5,8 +5,12 @@ import {
 } from "../../../utils";
 
 import {
-  Account
+  Acct
 } from '../../../components';
+
+import { 
+  Loader
+} from '../../../containers';
 
 interface IState {
   _id: any,
@@ -17,15 +21,16 @@ interface IState {
   subtractInput: number
 }
 
-class AcctWrapper extends React.Component<{
+class Account extends React.Component<{
   _id: any;
   acctNum: number;
+  allAccts: any;
   // balChange?:any;
   delClick?: any;
   balance: number;
   nameFirst: string;
   nameLast: string;
-  children?: any,
+  // children?: any,
 }> {
   public state: IState;  
   public constructor(props: any) {
@@ -73,11 +78,6 @@ public stringInputHandler = () => {
     return true
   }
   return false;
-  // IVAL.isAString() ?
-  // console.log('id say its a string') :
-  // console.log('id say its not')
-  // IVAL.lengthCheck(val)
-  // IVAL.uppercaseEditor(val)
 }
 
 public stringChangeHandler = (e: any) => {
@@ -121,22 +121,22 @@ public submitHandler = async (cORd: string, arg: number) => {
 // -----------------------------------
   public render() {
     return (
-      <div><Account 
+      <div><Acct 
         nameFirst={this.props.nameFirst}
         nameLast={this.props.nameLast}
         acctNum={this.props.acctNum}
         balance={this.props.balance}
         _id={this.props._id}
         delClick={this.props.delClick}
-        // balChange={this.balUpdate}
         numChange={this.numInputHandler}      
         subtractClick={this.subtractClickHandler}  
         isNumber={this.isNumber}
         addClick={this.addClickHandler}
         stringChange={this.stringChangeHandler}
-      {...this.state}/></div>
+        {...this.state} 
+        /></div>
     )      
   }
 }
 
-export default AcctWrapper;
+export default Loader(Account);

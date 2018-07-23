@@ -1,6 +1,6 @@
 
 // export * from structure
-export { default as Account } from './structure/account/account';
+export { default as Acct } from './structure/account/account';
 export { default as Header } from './structure/account/header/header';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
