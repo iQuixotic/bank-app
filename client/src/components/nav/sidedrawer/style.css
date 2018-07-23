@@ -1,0 +1,54 @@
+.Sidedrawer {
+    height: 100%;
+    width: 80%;
+    position: fixed;
+    background-color: rgb(226, 226, 226);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 201;
+}
+
+.Sidedrawer_Ani-In {
+    animation: moveOut .5s ease-out;
+}
+
+.Sidedrawer_Ani-Out {
+    animation: moveIn .5s ease-out;
+}
+
+.Sidedrawer nav {
+    width: 100%;
+    background-color: rgba(39, 6, 32, 0);
+}
+
+
+@keyframes moveOut {
+    0% {
+        transform: translateX(-100%);        
+    }
+
+    100% {
+        transform: translate(0);  
+    }
+}
+
+
+
+@keyframes moveIn {
+    0% {
+        transform: translate(0);        
+    }
+
+    100% {
+        transform: translateX(-100%);  
+    }
+}
+
+/* 
+@media only screen and (min-width: 768px) {
+    /* For desktop: 
+
+} */

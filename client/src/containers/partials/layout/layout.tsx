@@ -6,7 +6,7 @@ import { Backdrop, Burger,  Sidedrawer, Toolbar } from "../../../components";
 import './style.css';
 
 interface IProps {
-  children: any
+  children: any,
 }
 
 interface IState {
@@ -27,6 +27,7 @@ class Layout extends Component<IProps, IState> {
     };
 
     this.updatePredicate = this.updatePredicate.bind(this);
+    this.sideDrawerToggle = this.sideDrawerToggle.bind(this);
   }
   public componentDidMount() {
     this.updatePredicate();
@@ -42,23 +43,23 @@ class Layout extends Component<IProps, IState> {
   }
 
   public sideDrawerToggle = () => {
-    const toggle = !this.state.sideDrawerOpen
+    const toggle: boolean = !this.state.sideDrawerOpen
     this.setState({ sideDrawerOpen: toggle })
     console.log(this.state.sideDrawerOpen)
   }
 
   public render() {
-    const isMobile = this.state.isMobile;
+    const isMobile: boolean = this.state.isMobile;
     return (
             <div>
               {isMobile ? 
               <Toolbar /> : 
                 (!this.state.sideDrawerOpen ?                  
-                <div className='mobile-burger' ><Burger size='3x' onClick={this.sideDrawerToggle}/></div>:
-                <div onClick={this.sideDrawerToggle}><Backdrop/><Sidedrawer /></div>                            
+                <div className='mobile-burger'><Burger size='5x' onClick={this.sideDrawerToggle}/></div>:
+                <div onClick={this.sideDrawerToggle}><Backdrop/><Sidedrawer showing={this.state.sideDrawerOpen} /></div>                            
                 )
               }
-              <div className='under-nav'>
+              <div className='under-nav' >
                 {this.props.children}
               </div>
               <div className='above-footer' />

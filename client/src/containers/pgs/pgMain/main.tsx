@@ -2,10 +2,10 @@
 import * as React from "react";
 
 // // import components
-import { Container, Toolbar } from "../../../components";
+import { Container } from "../../../components";
 
 // import containers
-import { Account } from "../../../containers";
+import { Account, Layout } from "../../../containers";
 
 // import utils
 import { API } from "../../../utils";
@@ -65,9 +65,8 @@ class Main extends React.Component {
 
   public render() {
     return (
-
+      <Layout >
       <div className='Main'>
-        <Toolbar />
         <Container>
           {this.state.allAccts.map(each => (
             < Account key = { each._id }
@@ -84,6 +83,7 @@ class Main extends React.Component {
           }
         </Container>
       </div>
+      </Layout>
 
     );
   }

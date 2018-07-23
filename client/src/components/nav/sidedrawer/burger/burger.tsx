@@ -1,20 +1,16 @@
-import * as React from "react";
-
-// import {  } from '../../../components';
-
-
-interface IProps {
-    onClick: any,
-    size: string,
-}
-
+import React from "react";
+import { Icon } from 'react-fa';
 import './style.css';
 
-const Burger = (props: IProps) => {
-    return (
-        <div onClick={props.onClick} className='Burger'>            
-            {props.size}
-        </div>
+// hamburger (industry term) icon for opening sidedrawer
+const Burger = (props: any) => {
+    return(
+    <div>
+         <Icon name=" fa-bars" 
+         size={props.size} 
+         className='Hamburger' 
+         onClick={props.onClick} />
+    </div>
     );
 }
 

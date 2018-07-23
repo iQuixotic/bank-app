@@ -25,12 +25,10 @@ class Account extends React.Component<{
   _id: any;
   acctNum: number;
   allAccts: any;
-  // balChange?:any;
   delClick?: any;
   balance: number;
   nameFirst: string;
   nameLast: string;
-  // children?: any,
 }> {
   public state: IState;  
   public constructor(props: any) {
