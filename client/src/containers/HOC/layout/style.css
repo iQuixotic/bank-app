@@ -1,10 +1,10 @@
-.under-nav {
+/* .under-nav {
     padding-top: 100px;
 }
 
 .above-footer {
     padding-bottom: 50px;
-}
+} */
 
 .mobile-burger {
     height: 55px;
@@ -20,17 +20,4 @@
 
 .mobile-burger:scroll {
     box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.5);
-}
-
-@media only screen and (min-width: 768px) {
-    /* For desktop: */
-    
-    .under-nav {
-        padding-top: 90px;
-    }
-    
-    .above-footer {
-        padding-bottom: 70px;
-    }
-
 }

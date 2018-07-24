@@ -1,16 +1,11 @@
 import * as React from "react";
+import MediaQuery from 'react-responsive';
 
-import {
-  API,
-} from "../../../utils";
+import { API, } from "../../../utils";
 
-import {
-  Acct
-} from '../../../components';
+import { Acct,  AcctMobile } from '../../../components';
 
-import { 
-  Loader
-} from '../../../containers';
+import { Loader } from '../../../containers';
 
 interface IState {
   _id: any,
@@ -116,25 +111,45 @@ public submitHandler = async (cORd: string, arg: number) => {
   })
 }
 
-// -----------------------------------
+  // -----------------------------------
   public render() {
     return (
-      <div><Acct 
-        nameFirst={this.props.nameFirst}
-        nameLast={this.props.nameLast}
-        acctNum={this.props.acctNum}
-        balance={this.props.balance}
-        _id={this.props._id}
-        delClick={this.props.delClick}
-        numChange={this.numInputHandler}      
-        subtractClick={this.subtractClickHandler}  
-        isNumber={this.isNumber}
-        addClick={this.addClickHandler}
-        stringChange={this.stringChangeHandler}
-        {...this.state} 
-        /></div>
-    )      
+      <div>
+        <MediaQuery query="(min-device-width: 1000px)">
+          <Acct
+            nameFirst={this.props.nameFirst}
+            nameLast={this.props.nameLast}
+            acctNum={this.props.acctNum}
+            balance={this.props.balance}
+            _id={this.props._id}
+            delClick={this.props.delClick}
+            numChange={this.numInputHandler}
+            subtractClick={this.subtractClickHandler}
+            isNumber={this.isNumber}
+            addClick={this.addClickHandler}
+            stringChange={this.stringChangeHandler}
+            {...this.state}
+          />
+        </MediaQuery>
+        <div>
+          <AcctMobile
+            nameFirst={this.props.nameFirst}
+            nameLast={this.props.nameLast}
+            acctNum={this.props.acctNum}
+            balance={this.props.balance}
+            _id={this.props._id}
+            delClick={this.props.delClick}
+            numChange={this.numInputHandler}
+            subtractClick={this.subtractClickHandler}
+            isNumber={this.isNumber}
+            addClick={this.addClickHandler}
+            stringChange={this.stringChangeHandler}
+            {...this.state}
+          />
+        </div>
+      </div>
+    )
   }
 }
-
+    
 export default Loader(Account);

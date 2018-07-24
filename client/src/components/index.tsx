@@ -1,6 +1,7 @@
 
 // export * from structure
 export { default as Acct } from './structure/account/account';
+export { default as AcctMobile } from './structure/account/acctMobile/acctMobile';
 export { default as Header } from './structure/account/header/header';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

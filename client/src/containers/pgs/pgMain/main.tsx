@@ -1,11 +1,10 @@
-
 import * as React from "react";
 
 // // import components
 import { Container } from "../../../components";
 
 // import containers
-import { Account, Layout } from "../../../containers";
+import { Account } from "../../../containers";
 
 // import utils
 import { API } from "../../../utils";
@@ -65,9 +64,9 @@ class Main extends React.Component {
 
   public render() {
     return (
-      <Layout >
       <div className='Main'>
         <Container>
+        
           {this.state.allAccts.map(each => (
             < Account key = { each._id }
                 nameFirst = { each.name.first }
@@ -83,12 +82,9 @@ class Main extends React.Component {
           }
         </Container>
       </div>
-      </Layout>
-
     );
   }
 }
-
 
 export default Main;
     

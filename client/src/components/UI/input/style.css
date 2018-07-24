@@ -54,3 +54,43 @@ input[type=number]::-webkit-outer-spin-button {
         opacity: 1;
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+    /* For mobile: */
+
+    #Input {
+        padding: 0rem;
+    }
+
+    .Input-Element {    
+        font-size: 2rem;
+        font-weight: 500;
+        margin: .5rem .5rem;
+    }
+
+    .Label {
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin: 4.5rem .5rem 0;
+    }
+
+    input:focus + label, 
+    input:valid + label {
+    animation: moveDown .5s ease-out;
+    color: rgb(49, 64, 199);
+} 
+
+@keyframes moveDown {
+    0% {
+        transform: translateY(-3rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
+
+} 

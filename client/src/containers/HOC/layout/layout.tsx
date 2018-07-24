@@ -59,10 +59,10 @@ class Layout extends Component<IProps, IState> {
                 <div onClick={this.sideDrawerToggle}><Backdrop/><Sidedrawer showing={this.state.sideDrawerOpen} /></div>                            
                 )
               }
-              <div className='under-nav' >
+              <div className='under-nav' {...this.state} >
                 {this.props.children}
               </div>
-              <div className='above-footer' />
+              <div className='above-footer' />              
             </div>          
     );
   }

@@ -1,6 +1,9 @@
 import * as React from "react";
 
+import { Layout } from '../../../containers';
+
 import './style.css';
+
 
 interface IState {
     allAcctsLen?: any
@@ -17,9 +20,13 @@ const Loader: any = (WrappedComponent: any) => {
         }
         public render() {
             return (
-                this.state.allAcctsLen < 2 ?
-                <div className="Loader"><div/><div/><div/><div/><div/><div/><div/><div/></div> : 
-                <WrappedComponent  {...this.props} />
+                <Layout>
+                    {
+                        this.state.allAcctsLen < 2 ?
+                        <div className="Loader"><div/><div/><div/><div/><div/><div/><div/><div/></div> : 
+                        <WrappedComponent  {...this.props}/>
+                    }
+                </Layout>
             )            
         }
     }
