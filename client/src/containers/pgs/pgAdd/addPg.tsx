@@ -7,10 +7,8 @@ import * as React from "react";
 //   Toolbar,
 // } from "../../../components";
 
-// // import containers
-// import {
-//   Account,
-// } from "../../../containers";
+// import containers
+import { Layout, MediaQuery } from "../../../containers";
 
 // // import utils
 // import {
@@ -19,7 +17,7 @@ import * as React from "react";
 
 import './style.css';
 
-import { 
+import {
   Toolbar,
 } from "../../../components";
 
@@ -40,9 +38,20 @@ class Add extends React.Component <{
 
   public render() {
     return (
-      <div className='Add'>
-        <Toolbar />
-      </div>
+        <MediaQuery
+          mobileSize={<div>Small B</div>}
+          fullSize={<div>Full B</div>}
+          div={Toolbar}>
+            <Layout>
+              <div>more layouts</div>
+              <div>more shit here</div>
+              <div>more shit here</div>
+
+            </Layout>
+            <Toolbar />
+            <div>HisChildrren</div>
+        </MediaQuery>
+      
     );
   }
 }

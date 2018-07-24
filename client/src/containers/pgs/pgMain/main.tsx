@@ -1,10 +1,10 @@
 import * as React from "react";
 
-// // import components
-import { Container } from "../../../components";
 
 // import containers
-import { Account } from "../../../containers";
+import { Account, Layout } from "../../../containers";
+
+import { Acct, AcctMobile, Container, Div } from "../../../components";
 
 // import utils
 import { API } from "../../../utils";
@@ -22,6 +22,7 @@ interface IState {
     },
   }],
   deleteID: string,
+  full: boolean,
   thisBal: number
 }
 
@@ -41,6 +42,7 @@ class Main extends React.Component {
         },
       }],
       deleteID: 'none yet supplied',
+      full: false,
       thisBal: 0,
     }
     this.componentWillMount = () => {
@@ -64,11 +66,13 @@ class Main extends React.Component {
 
   public render() {
     return (
+      <Layout>
       <div className='Main'>
-        <Container>
         
           {this.state.allAccts.map(each => (
             < Account key = { each._id }
+                wrapper={this.state.full ? Container : Div}
+                rend={this.state.full ? Acct : AcctMobile}
                 nameFirst = { each.name.first }
                 nameLast = { each.name.last }
                 acctNum = { each.acct }
@@ -80,8 +84,8 @@ class Main extends React.Component {
               )
             )
           }
-        </Container>
       </div>
+      </Layout>
     );
   }
 }

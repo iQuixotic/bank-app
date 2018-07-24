@@ -7,17 +7,14 @@ import {
 
 interface IProps {
     children?: any,
-    showing: boolean
+    // showing: boolean
 }
 
 import './style.css';
 
 const Sidedrawer = (props: IProps) => {
     return ( 
-            <div 
-            className={props.showing ?
-                'Sidedrawer Sidedrawer_Ani-In':
-                'Sidedrawer Sidedrawer_Ani-Out'}>          
+            <div className='Sidedrawer' >
             <nav>
                 <NavItems 
                 nav1="Accounts" link1='/'

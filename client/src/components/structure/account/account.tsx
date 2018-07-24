@@ -26,7 +26,7 @@ import './style.css';
 
 const Account = (props: IProps) => {
     return (
-      <div className='card Account'>
+      <div className='card  Account'>
       <Row>
         <Header 
           _id={props._id}
@@ -42,8 +42,8 @@ const Account = (props: IProps) => {
         <Col size="md-5">
           <Row>
             <div className='Account_Balance'>
-              Balance: <span id='Balance'>
-              {props.balance.toFixed(2)}</span>
+              Balance: <span id='Acct_Balance'>
+              ${props.balance.toFixed(2)}</span>
             </div>
           </Row>
 

@@ -41,9 +41,9 @@
     color: red;
 }
 
-#Balance {
-    padding-left: 2.5rem ;
-    font-size: 2rem;
-    font-weight: 500;
+#Acct_Balance {
+    padding-left: 3.5rem ;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 

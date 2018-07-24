@@ -42,7 +42,7 @@ const AcctMobile = (props: IProps) => {
           {/* Account Balance */}
       <Row>
             <div className='Mobile_Balance'>
-              Balance: <span id='Balance'>
+              Balance: <span id='Mobile_Balance'>
               ${props.balance.toFixed(2)}</span>
             </div>
             </Row>

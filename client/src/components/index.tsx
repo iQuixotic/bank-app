@@ -7,6 +7,7 @@ export { default as Header } from './structure/account/header/header';
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 export { default as Col } from './structure/grid/col';
 export { default as Container } from './structure/grid/container';
+export { default as Div } from './structure/grid/div';
 export { default as Row } from './structure/grid/row';
 
 // export * from nav

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // import components
-import { Backdrop, Burger,  Sidedrawer, Toolbar } from "../../../components";
+import { Backdrop, Burger,  Sidedrawer, Toolbar } from "./../../components";
 
 import './style.css';
 
@@ -18,7 +18,6 @@ interface IState {
 - uses screen size to determine what to render
 in regards to navigation */
 class Layout extends Component<IProps, IState> {
-  // public state: IState
   public constructor(props: IProps) {  
     super(props);
     this.state = {
@@ -51,12 +50,12 @@ class Layout extends Component<IProps, IState> {
   public render() {
     const isMobile: boolean = this.state.isMobile;
     return (
-            <div>
+            <div className='Layout'>
               {isMobile ? 
               <Toolbar /> : 
                 (!this.state.sideDrawerOpen ?                  
-                <div className='mobile-burger'><Burger size='5x' onClick={this.sideDrawerToggle}/></div>:
-                <div onClick={this.sideDrawerToggle}><Backdrop/><Sidedrawer showing={this.state.sideDrawerOpen} /></div>                            
+                <div className='mobile-burger'><Burger size='3x' onClick={this.sideDrawerToggle}/></div>:
+                <div onClick={this.sideDrawerToggle}><Sidedrawer/><Backdrop/><Sidedrawer /></div>                            
                 )
               }
               <div className='under-nav' {...this.state} >

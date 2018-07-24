@@ -2,11 +2,11 @@
     height: 100%;
     width: 80%;
     position: fixed;
-    background-color: rgb(226, 226, 226);
-    color: white;
-    display: flex;
+    background-color: rgb(233, 0, 0);
+    /* color: white; */
+    /* display: flex; */
     justify-content: space-between;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     box-sizing: border-box;
     z-index: 201;
 }

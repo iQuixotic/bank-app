@@ -1,11 +1,10 @@
 import * as React from "react";
-import MediaQuery from 'react-responsive';
 
-import { API, } from "../../../utils";
+import { API, } from "./../../utils";
 
-import { Acct,  AcctMobile } from '../../../components';
+// import { Container } from './../../components';
 
-import { Loader } from '../../../containers';
+import { Loader } from './../../containers';
 
 interface IState {
   _id: any,
@@ -24,6 +23,8 @@ class Account extends React.Component<{
   balance: number;
   nameFirst: string;
   nameLast: string;
+  rend: any,
+  wrapper: any
 }> {
   public state: IState;  
   public constructor(props: any) {
@@ -114,9 +115,8 @@ public submitHandler = async (cORd: string, arg: number) => {
   // -----------------------------------
   public render() {
     return (
-      <div>
-        <MediaQuery query="(min-device-width: 1000px)">
-          <Acct
+      <this.props.wrapper>
+          {<this.props.rend
             nameFirst={this.props.nameFirst}
             nameLast={this.props.nameLast}
             acctNum={this.props.acctNum}
@@ -129,25 +129,8 @@ public submitHandler = async (cORd: string, arg: number) => {
             addClick={this.addClickHandler}
             stringChange={this.stringChangeHandler}
             {...this.state}
-          />
-        </MediaQuery>
-        <div>
-          <AcctMobile
-            nameFirst={this.props.nameFirst}
-            nameLast={this.props.nameLast}
-            acctNum={this.props.acctNum}
-            balance={this.props.balance}
-            _id={this.props._id}
-            delClick={this.props.delClick}
-            numChange={this.numInputHandler}
-            subtractClick={this.subtractClickHandler}
-            isNumber={this.isNumber}
-            addClick={this.addClickHandler}
-            stringChange={this.stringChangeHandler}
-            {...this.state}
-          />
-        </div>
-      </div>
+            />}
+      </this.props.wrapper>
     )
   }
 }
