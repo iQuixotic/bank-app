@@ -1,64 +1,60 @@
-import React, { Children, Component } from "react";
+import * as React from "react";
 
 interface IProps {
-    childNum?: number,
-    children?: any,
-    cn?: string,
-    
-    div: any,
-    // size: number,
+    children: any,
     fullSize?: any,
+    lowerLimit?: number,
     mobileSize?: any,
+    upperLimit?: number,
 }
 
 interface IState {
-    childNum: number,
+    isMobile: boolean,
+    lowerLimit?: boolean,
     screenSize: number,
-    sideDrawerOpen: boolean
+    upperLimit?: boolean,
 }
 
-class MediaQuery extends Component<IProps, IState> {
-    public constructor(props: IProps) {
-        super(props);
-        this.state = {
-            childNum: this.props.childNum ? this.props.childNum : 0,
-            screenSize: window.innerWidth,
-            sideDrawerOpen: false
-        };
-        this.updatePredicate = this.updatePredicate.bind(this);
-        this.sideDrawerToggle = this.sideDrawerToggle.bind(this);
-    }
-    public componentDidMount() {
-        this.updatePredicate();
-        window.addEventListener("resize", this.updatePredicate);
+
+// renderless component to decide which components to render 
+class MediaQuery extends React.Component<IProps, IState> {
+        public constructor(props: IProps) {
+            super(props);
+            this.state = {
+                isMobile: false,
+                lowerLimit: false,
+                screenSize: window.innerWidth,                   
+                upperLimit: false,           
+            };
+            this.updatePredicate = this.updatePredicate.bind(this);
+        }
+        public componentDidMount() {
+            this.updatePredicate();
+            window.addEventListener("resize", this.updatePredicate);
+        }
+
+        public componentWillUnmount() {
+            window.removeEventListener("resize", this.updatePredicate);
+        }
+
+        public updatePredicate() {
+            const ww = window.innerWidth;
+            this.setState({
+                lowerLimit: this.props.lowerLimit !== undefined ? this.props.lowerLimit > ww : false,
+                screenSize: ww,
+                upperLimit: this.props.upperLimit !== undefined ? this.props.upperLimit < ww : false,
+            });
+        }
+
+        public render() {
+            return (
+                // if not at the upper or lower bounds of the query, render children
+                !this.state.lowerLimit && !this.state.upperLimit ?
+                this.props.children :
+                null
+            )              
+        }
     }
 
-    public componentWillUnmount() {
-        window.removeEventListener("resize", this.updatePredicate);
-    }
-
-    public updatePredicate() {
-        this.setState({ screenSize: window.innerWidth });
-        console.log(this.state.screenSize)
-    }
-
-    public sideDrawerToggle = () => {
-        const toggle: boolean = !this.state.sideDrawerOpen
-        this.setState({ sideDrawerOpen: toggle })
-        console.log(this.state.sideDrawerOpen)
-    }
-
-    public render() {
-        return (
-            <div>  
-                `${<this.props.div/>}`
-                {this.state.screenSize < 600 ?
-                this.props.mobileSize :
-                (Children.toArray(this.props.children)[this.state.childNum])
-                }                              
-            </div>
-        );
-    }
-}
 
 export default MediaQuery;

@@ -1,8 +1,7 @@
 import * as React from "react";
 
-
 // import containers
-import { Account, Layout } from "../../../containers";
+import { Account, Layout, MQ } from "../../../containers";
 
 import { Acct, AcctMobile, Container, Div } from "../../../components";
 
@@ -42,11 +41,15 @@ class Main extends React.Component {
         },
       }],
       deleteID: 'none yet supplied',
-      full: false,
+      full: true,
       thisBal: 0,
     }
     this.componentWillMount = () => {
       this.getAllAccts();
+    }
+
+    this.componentWillUpdate = () => {
+      console.log((<MQ upperLimit={1000}>{true}</MQ>).props.children)
     }
   }
 
@@ -68,11 +71,11 @@ class Main extends React.Component {
     return (
       <Layout>
       <div className='Main'>
-        
+      <MQ lowerLimit={1001}>
           {this.state.allAccts.map(each => (
             < Account key = { each._id }
-                wrapper={this.state.full ? Container : Div}
-                rend={this.state.full ? Acct : AcctMobile}
+                wrapper={Container}
+                rend={Acct}
                 nameFirst = { each.name.first }
                 nameLast = { each.name.last }
                 acctNum = { each.acct }
@@ -84,6 +87,25 @@ class Main extends React.Component {
               )
             )
           }
+      </MQ>
+      <MQ upperLimit={1000}>
+          {this.state.allAccts.map(each => (
+            < Account key = { each._id }
+                wrapper={Div}
+                rend={AcctMobile}
+                nameFirst = { each.name.first }
+                nameLast = { each.name.last }
+                acctNum = { each.acct }
+                balance = { each.balance }
+                _id = { each._id }
+                delClick = { this.deleteAcctHandler }
+                allAcctsLength={this.state.allAccts.length}
+            />
+              )
+            )
+          }
+      </MQ>
+
       </div>
       </Layout>
     );

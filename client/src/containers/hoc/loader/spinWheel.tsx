@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Layout } from '../../../containers';
+// import { Layout } from '../../../containers';
 
 import './style.css';
 
@@ -10,7 +10,7 @@ interface IState {
 }
 
 const Loader: any = (WrappedComponent: any) => {
-    return class LoaderHOC extends React.Component <{allAcctsLength: any}>{
+    return class LoaderHOC extends React.Component<{ allAcctsLength: any }>{
         public state: IState;
         public constructor(props: any) {
             super(props);
@@ -20,16 +20,14 @@ const Loader: any = (WrappedComponent: any) => {
         }
         public render() {
             return (
-                <Layout>
-                    {
-                        this.state.allAcctsLen < 2 ?
-                        <div className="Loader"><div/><div/><div/><div/><div/><div/><div/><div/></div> : 
-                        <WrappedComponent  {...this.props}/>
-                    }
-                </Layout>
-            )            
+
+                this.state.allAcctsLen < 2 ?
+                    <div className="Loader"><div /><div /><div /><div /><div /><div /><div /><div /></div> :
+                    <WrappedComponent  {...this.props} />
+
+            )
         }
     }
 }
- 
+
 export default Loader;

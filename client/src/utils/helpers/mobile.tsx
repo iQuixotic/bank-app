@@ -1,3 +1,6 @@
+// import { Sidedrawer } from "../../components";
+
+// window.addEventListener("resize", this.updatePredicate);
 
 // interface IRoutes {
     
@@ -10,5 +13,16 @@ export default {
     scrollShadow: () => {
         console.log('I am helping with the scroll')
     },
+    
+    // updatePredicate: () => {
+    //     // this.setState({ screenSize: window.innerWidth });
+    //     console.log(window.innerWidth)
+    // },
+
+   checkScreenSize: () => {
+    console.log(window.innerWidth)
+    return window.innerWidth;
+   }
+
 
 };

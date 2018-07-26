@@ -8,7 +8,7 @@ import * as React from "react";
 // } from "../../../components";
 
 // import containers
-import { Layout, MediaQuery } from "../../../containers";
+import { Layout, MQ } from "../../../containers";
 
 // // import utils
 // import {
@@ -38,10 +38,7 @@ class Add extends React.Component <{
 
   public render() {
     return (
-        <MediaQuery
-          mobileSize={<div>Small B</div>}
-          fullSize={<div>Full B</div>}
-          div={Toolbar}>
+        <MQ lowerLimit={600}>
             <Layout>
               <div>more layouts</div>
               <div>more shit here</div>
@@ -50,7 +47,7 @@ class Add extends React.Component <{
             </Layout>
             <Toolbar />
             <div>HisChildrren</div>
-        </MediaQuery>
+        </MQ>
       
     );
   }
