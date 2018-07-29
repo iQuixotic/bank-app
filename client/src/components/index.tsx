@@ -3,6 +3,7 @@
 export { default as Acct } from './structure/account/account';
 export { default as AcctMobile } from './structure/account/acctMobile/acctMobile';
 export { default as Header } from './structure/account/header/header';
+export { default as Line } from './structure/account/line/line';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 export { default as Col } from './structure/grid/col';

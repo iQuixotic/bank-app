@@ -1,0 +1,48 @@
+.Line {
+    text-decoration: none;
+}
+
+.Line_Credit, 
+.Line_Debit {
+    display: flex;
+    list-style-type: none;
+}
+
+.Line_Debit {
+    background-color: rgb(255, 227, 227);
+    color: rgb(0, 0, 0);
+}
+
+.Line_Credit { 
+    background-color: rgba(197, 253, 206, 0.281);
+    color: rgb(8, 8, 8);
+}
+/* 
+.Line-ammount, .Line-type, .Line-party {
+
+} */
+
+.Line-ammount {
+    width: 30%;
+}
+
+
+.Line-type {
+    width: 20%;
+}
+
+.Line-party {
+    width: 50%;
+}
+
+.Line-delete {
+    color: red;
+    font-size: 2rem;
+    float: right;
+    width: 2%;
+}
+
+.Line-delete:hover {
+    font-weight: bolder;
+}
+

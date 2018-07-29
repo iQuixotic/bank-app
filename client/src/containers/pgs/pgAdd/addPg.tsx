@@ -1,14 +1,13 @@
 
 import * as React from "react";
 
-// // // import components
+// import components
 // import {
-//   Container,
-//   Toolbar,
+//   Acct
 // } from "../../../components";
 
 // import containers
-import { Layout, MQ } from "../../../containers";
+import { Layout } from "../../../containers";
 
 // // import utils
 // import {
@@ -17,42 +16,54 @@ import { Layout, MQ } from "../../../containers";
 
 import './style.css';
 
-import {
-  Toolbar,
-} from "../../../components";
 
-interface IState {     
-    _id: string,
+interface IState {
+  _id: string,
+  acct: number,
+  balance: number,
+  initialDeposit: number;
+  name: {
+    first: string,
+    last: string
+  },
 }
 
-class Add extends React.Component <{
-    _id: string,
-}> {
+class Add extends React.Component {
   public state: IState;
   public constructor(props: any) {
-    super(props);
-    this.state = {    
-        _id: 'NA',       
-    }
+  super(props);
+    this.state = {
+
+  _id: 'NA',
+  acct: 0,
+  balance: 0,
+  initialDeposit: 0,
+  name: {
+    first: 'NA',
+    last: 'NA'
+  },
+}
   }
+
 
   public render() {
-    return (
-        <MQ lowerLimit={600}>
-            <Layout>
-              <div>more layouts</div>
-              <div>more shit here</div>
-              <div>more shit here</div>
+  return (
+    <Layout>childeren
+               {/* < Account key = { each._id }
+                wrapper={Container}
+                rend={Acct}
+                nameFirst = { each.name.first }
+                nameLast = { each.name.last }
+                acctNum = { each.acct }
+                balance = { each.balance }
+                _id = { ._id }
+                delClick = { this.deleteAcctHandler }
+                allAcctsLength={this.state.allAccts.length}
+            /> */}
+    </Layout>
 
-            </Layout>
-            <Toolbar />
-            <div>HisChildrren</div>
-        </MQ>
-      
-    );
-  }
+  );
 }
-
-
+}
 export default Add;
-    
+

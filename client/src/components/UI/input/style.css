@@ -56,8 +56,22 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-@media screen and (max-width: 600px) {
-    /* For mobile: */
+
+@media screen and (max-width: 995px) {
+    /* For large tablet or laptop */
+
+    #Input {
+        padding: 0rem;
+    }
+
+    .Input-Element {    
+        width: 100%;
+    }
+
+} 
+
+@media screen and (max-width: 750px) {
+    /* For tablet */
 
     #Input {
         padding: 0rem;

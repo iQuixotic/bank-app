@@ -7,18 +7,10 @@ import {
 
 
 interface IProps {
-  _id: any;
-  acctNum: number;
-  addClick: any;
-  balance: number;
-  balChange?:any;
-  children?: any,
-  delClick?: any;
-  isNumber: any;
-  nameFirst: string;
-  nameLast: string;
-  numChange: any;
-  stringChange: any,
+  _id: any;  acctNum: number;  addClick: any;
+  balance: number;  balChange?:any;  children?: any,
+  delClick?: any;  isNumber: any;  nameFirst: string;
+  nameLast: string;  numChange: any;  stringChange: any,
   subtractClick: any,
 }
 
@@ -29,6 +21,7 @@ const Account = (props: IProps) => {
       <div className='card  Account'>
       <Row>
         <Header 
+          path={props._id}
           _id={props._id}
           nameLast={props.nameLast}
           nameFirst={props.nameFirst}
@@ -39,7 +32,7 @@ const Account = (props: IProps) => {
 
     {/* Account Balance */}
       <Row>
-        <Col size="md-5">
+        <Col size="sm-5">
           <Row>
             <div className='Account_Balance'>
               Balance: <span id='Acct_Balance'>
@@ -52,7 +45,7 @@ const Account = (props: IProps) => {
             <div className="Account_Payed-To">
               <Input
                 type='text'
-                id={props._id}                  
+                id={`paymentInput ${props._id}`}                                
                 onChange={props.stringChange}                  
                 itype='input'
                 label='Payed To/From'
@@ -62,15 +55,15 @@ const Account = (props: IProps) => {
 
           </Row>
         </Col>
-        <Col size='md-1' />
-        <Col size="md-6">
+        <Col size='sm-1' />
+        <Col size="sm-6">
 
         {/* Add funds begins here */}
           <Row>
-            <Col size='md-8'>
+            <Col size='sm-8'>
               <Input
                 type='number'
-                id={props._id}
+                id={`addInput ${props._id}`}
                 onChange={props.numChange}                  
                 itype='input'
                 label='Add Funds'
@@ -78,8 +71,8 @@ const Account = (props: IProps) => {
                 keyPress={props.isNumber}
               />
             </Col>
-            <Col size='md-1' />
-            <Col size='md-3'>
+            <Col size='sm-1' />
+            <Col size='sm-3'>
               <div className="padd-down">
                 <button id={props._id}
                 onClick={props.addClick}
@@ -90,10 +83,10 @@ const Account = (props: IProps) => {
 
         {/* Subtract funds begins here */}
           <Row>
-            <Col size='md-8'>
+            <Col size='sm-8'>
               <Input
                 type="number"
-                id={props._id}
+                id={`subtInput ${props._id}`}                
                 onChange={props.numChange}
                 itype='input'
                 label='Subtract Funds'
@@ -101,8 +94,8 @@ const Account = (props: IProps) => {
                 keyPress={props.isNumber}
               />
             </Col>
-            <Col size='md-1' />
-            <Col size='md-3'>
+            <Col size='sm-1' />
+            <Col size='sm-3'>
               <div className="padd-down">
                 <button 
                 id={props._id}

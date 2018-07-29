@@ -51,6 +51,10 @@ class Main extends React.Component {
     this.componentWillUpdate = () => {
       console.log((<MQ upperLimit={1000}>{true}</MQ>).props.children)
     }
+
+    this.componentDidMount = () => {
+      console.log(props)
+    }
   }
 
   public getAllAccts = () => {
@@ -71,7 +75,7 @@ class Main extends React.Component {
     return (
       <Layout>
       <div className='Main'>
-      <MQ lowerLimit={1001}>
+      <MQ lowerLimit={751}>
           {this.state.allAccts.map(each => (
             < Account key = { each._id }
                 wrapper={Container}
@@ -82,13 +86,13 @@ class Main extends React.Component {
                 balance = { each.balance }
                 _id = { each._id }
                 delClick = { this.deleteAcctHandler }
-                allAcctsLength={this.state.allAccts.length}
+                // allAcctsLength={this.state.allAccts.length}
             />
               )
             )
           }
       </MQ>
-      <MQ upperLimit={1000}>
+      <MQ upperLimit={750}>
           {this.state.allAccts.map(each => (
             < Account key = { each._id }
                 wrapper={Div}
@@ -99,7 +103,7 @@ class Main extends React.Component {
                 balance = { each.balance }
                 _id = { each._id }
                 delClick = { this.deleteAcctHandler }
-                allAcctsLength={this.state.allAccts.length}
+                // allAcctsLength={this.state.allAccts.length}
             />
               )
             )

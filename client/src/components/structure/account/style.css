@@ -47,3 +47,47 @@
     font-weight: 700;
 }
 
+@media screen and (max-width: 995px) {
+    /* For medium tablet */
+
+    .card {
+        width: 110%;
+        right: 5%;
+        margin: 0;
+    }
+
+    
+.Account_Add-Funds,
+.Account_Subtract-Funds {
+    margin-top: 0rem;
+}
+
+}
+
+@media screen and (max-width: 775px) {
+    /* For medium tablet */
+
+    .card {
+        width: 105%;
+        right: 2.5%;
+    }
+
+}
+
+@media screen and (max-width: 766px) {
+    /* For medium tablet */
+
+
+    .Account {
+        width: 130%;
+        right: 15%;
+        height: 27rem;
+    }
+
+    
+.Account_Add-Funds,
+.Account_Subtract-Funds {
+    width: 415%;
+}
+
+} 

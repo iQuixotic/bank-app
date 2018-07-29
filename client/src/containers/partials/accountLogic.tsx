@@ -6,6 +6,10 @@ import { API, } from "./../../utils";
 
 import { Loader } from './../../containers';
 
+// interface Protect {
+//   readonly myId: string;
+// }
+
 interface IState {
   _id: any,
   addInput: number,
@@ -16,7 +20,7 @@ interface IState {
 }
 
 class Account extends React.Component<{
-  _id: any;
+  _id: string;
   acctNum: number;
   allAccts: any;
   delClick?: any;
@@ -94,7 +98,8 @@ public subtractClickHandler = async () => {
   console.log(-this.state.subtractInput);  
 }
 
-public submitHandler = async (cORd: string, arg: number) => {
+// on submission
+public submitHandler = async (creditOrDebit: string, arg: number) => {
   const data: any =  {
     _id: this.state._id,
     balance: this.state.balance + arg
@@ -102,14 +107,25 @@ public submitHandler = async (cORd: string, arg: number) => {
   const trans: any =  {
     ammount: arg,
     party: this.state.payToInput,
-    type: cORd
+    type: creditOrDebit
   }
   API.updateBalance(data, data._id)
-  console.log(trans)
   API.updateOneEntry(trans, data._id)
   await this.setState({
-  balance: data.balance
+      balance: data.balance
   })
+  await this.resetInputFields(this.props._id);
+}
+
+// to avoid submitting the same information twice
+public resetInputFields = (id: string) => {
+  const addInput: any = document.getElementById(`addInput ${id}`);
+  const subtInput: any = document.getElementById(`subtInput ${id}`);
+  const paymentInput: any = document.getElementById(`paymentInput ${id}`);
+
+  addInput.value = ''
+  subtInput.value = ''
+  paymentInput.value = ''
 }
 
   // -----------------------------------

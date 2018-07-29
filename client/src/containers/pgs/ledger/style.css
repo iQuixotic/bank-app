@@ -1,0 +1,17 @@
+.Ledger {
+    font-size: 2rem;
+    padding: 16rem 0 5rem;
+}
+
+.Ledger-CDs:nth-child(2) {
+    color: green;
+}
+
+@media screen and (max-width: 750px) {
+
+    .Ledger {
+        /* padding: 0; */
+        align-items: center;
+    }
+
+} 
