@@ -1,0 +1,22 @@
+/* 
+.LedgerTop {
+
+} */
+
+.LedgerTop_Name {
+    font-weight: 700;
+    font-size: 4rem;
+    display: flex;
+    width: 45%;
+}
+
+.LedgerTop_Acct-Num {
+    font-weight: 700;
+    font-size: 3rem;
+    display: flex;
+}
+
+.LedgerTop_Balance {
+    font-weight: 700;
+    font-size: 3rem;
+}

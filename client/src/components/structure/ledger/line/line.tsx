@@ -14,7 +14,7 @@ interface IProps {
 
 const Line = (props: IProps) => {
     return(
-        <div className='Line'>
+        <div className='Line' {...props}>
             <ul className={
                 props.cd ? 
                 'Line_Credit' :

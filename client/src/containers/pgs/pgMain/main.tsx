@@ -22,6 +22,7 @@ interface IState {
   }],
   deleteID: string,
   full: boolean,
+  loading: boolean,
   thisBal: number
 }
 
@@ -42,33 +43,25 @@ class Main extends React.Component {
       }],
       deleteID: 'none yet supplied',
       full: true,
+      loading: false,
       thisBal: 0,
     }
-    this.componentWillMount = () => {
-      this.getAllAccts();
-    }
-
-    this.componentWillUpdate = () => {
-      console.log((<MQ upperLimit={1000}>{true}</MQ>).props.children)
-    }
-
     this.componentDidMount = () => {
-      console.log(props)
-    }
+      this.setState({ loading: true })
+      this.getAllAccts()
+    }    
   }
 
   public getAllAccts = () => {
     API.grabAccounts()
       .then(res => this.setState({ allAccts: res.data }))
-      .then(() => console.log(this.state.allAccts))
+      .then(() => this.setState({ loading: false }))
       .catch(err => console.log(err))
   }
 
   public deleteAcctHandler = (e: any) => {
     console.log(this.state.deleteID);
-    this.setState({
-      deleteID: e.target.id
-    });
+    this.setState({ deleteID: e.target.id });
   }
 
   public render() {
@@ -86,7 +79,8 @@ class Main extends React.Component {
                 balance = { each.balance }
                 _id = { each._id }
                 delClick = { this.deleteAcctHandler }
-                // allAcctsLength={this.state.allAccts.length}
+                // loading={this.state.loading}
+                {...this.state} {...this.props}
             />
               )
             )
@@ -103,7 +97,8 @@ class Main extends React.Component {
                 balance = { each.balance }
                 _id = { each._id }
                 delClick = { this.deleteAcctHandler }
-                // allAcctsLength={this.state.allAccts.length}
+                // loading={this.state.loading}
+                {...this.state} 
             />
               )
             )

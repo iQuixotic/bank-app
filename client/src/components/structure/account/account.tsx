@@ -21,7 +21,7 @@ const Account = (props: IProps) => {
       <div className='card  Account'>
       <Row>
         <Header 
-          path={props._id}
+          path={`id/${props._id}`}
           _id={props._id}
           nameLast={props.nameLast}
           nameFirst={props.nameFirst}

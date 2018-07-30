@@ -13,9 +13,9 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <Route path="/new" component={Add} />
           <Route exact={true} path="/" component={Main} />
-          <Route exact={true} path="/:id" component={Ledger} />
+          <Route exact={true} path="/id/:id" component={Ledger} />
+          <Route exact={true} path="/new" component={Add} />
         </div>
       </Router>
     );

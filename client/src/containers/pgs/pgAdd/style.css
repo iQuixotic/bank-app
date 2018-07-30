@@ -1,0 +1,30 @@
+.Add {
+    padding: 16rem 0 5rem;
+    font-size: 2rem;
+}
+
+.Add_Input-Element {
+    align-content: center;
+    margin-top: 4rem;
+}
+
+.Add input {
+    width: 80%;
+    font-size: 2rem;
+}
+
+.Add_Submit-Button {
+    padding: 3rem;
+    margin: 3rem;
+    text-align: center;
+}
+
+
+/* 
+@media screen and (max-width: 750px) {
+
+    .Add {
+        align-items: center;
+    }
+
+}  */

@@ -2,7 +2,7 @@
 import * as React from "react";
 
 // import components
-import { Container, Line } from "../../../components";
+import { Container, LedgerTop, Line } from "../../../components";
 
 // import containers
 import { Layout } from "../../../containers";
@@ -16,7 +16,7 @@ interface IState {
   _id: string,
   acctNum: number,
   balance: number,
-//   initialDeposit: number;
+  loading: boolean,
   name: {
     first: string,
     last: string
@@ -37,7 +37,7 @@ class Ledger extends React.Component {
   _id: 'NA',
   acctNum: 0,
   balance: 0,
-//   initialDeposit: 0,
+  loading: false,
   name: {
     first: 'NA',
     last: 'NA'
@@ -48,6 +48,11 @@ class Ledger extends React.Component {
       type: '',
   }],
 }
+  }
+
+  
+  public componentDidMount() {
+    this.setState({ loading: true })
   }
 
   public componentWillMount() {
@@ -62,12 +67,12 @@ class Ledger extends React.Component {
         _id: arg._id,
         acctNum: arg.acct,
         balance: arg.balance,
+        loading: false,
         name: {
             first: arg.name.first,
             last: arg.name.last,
         },
         transactions: arg.transactions
-
     })
     console.log(this.state)
   }
@@ -77,7 +82,13 @@ class Ledger extends React.Component {
     <Layout>
         <Container>
             <div className="Ledger">            
-                {this.state._id}
+              <LedgerTop 
+                firstName={this.state.name.first}
+                lastName={this.state.name.last}
+                balance={this.state.balance}
+                acctNum={this.state.acctNum}
+                />
+                {/* {this.state._id}
                 <hr/>
                 {this.state.acctNum}
                 <hr/>
@@ -86,7 +97,7 @@ class Ledger extends React.Component {
                 {this.state.name.first}
                 <hr/>
                 {this.state.name.last}
-                <hr/>
+                <hr/> */}
                 {this.state.transactions.map(each => (
                     <Container>
                         <div className='Ledger-CDs'>
@@ -94,7 +105,8 @@ class Ledger extends React.Component {
                                 cd={each.type === 'credit'}
                                 trans={each.type}
                                 ammount={each.ammount}
-                                party={each.party} />
+                                party={each.party} 
+                                balance={this.state.balance}/>
                         </div>
                     </Container>
                 ) ) }

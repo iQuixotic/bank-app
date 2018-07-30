@@ -1,14 +1,9 @@
 import * as React from "react";
 
-import { API, } from "./../../utils";
-
-// import { Container } from './../../components';
+import { API, NUM } from "./../../utils";
 
 import { Loader } from './../../containers';
 
-// interface Protect {
-//   readonly myId: string;
-// }
 
 interface IState {
   _id: any,
@@ -20,13 +15,13 @@ interface IState {
 }
 
 class Account extends React.Component<{
-  _id: string;
-  acctNum: number;
-  allAccts: any;
-  delClick?: any;
-  balance: number;
-  nameFirst: string;
-  nameLast: string;
+  _id: string,
+  acctNum: number,
+  allAccts: any,
+  delClick?: any,
+  balance: number,
+  nameFirst: string,
+  nameLast: string,
   rend: any,
   wrapper: any
 }> {
@@ -34,7 +29,7 @@ class Account extends React.Component<{
   public constructor(props: any) {
     super(props);
     this.numInputHandler = this.numInputHandler.bind(this);
-    this.isNumber = this.isNumber.bind(this)
+    // this.isNumber = this.isNumber.bind(this)
     this.state = {
       _id: this.props._id,
       addInput: 0,
@@ -50,12 +45,12 @@ class Account extends React.Component<{
 
 // -----------------------------------
 // only allow numbers and .'s in number input field
-public isNumber = (e:any) => {
-  const char = (e.which)
-  char < 48 && char !== 46 || char > 58 && char !== 46 ? 
-  e.preventDefault() :
-  console.log('')
-}
+// public isNumber = (e:any) => {
+//   const char = (e.which)
+//   char < 48 && char !== 46 || char > 58 && char !== 46 ? 
+//   e.preventDefault() :
+//   console.log('')
+// }
 
 public numFormatHandler = (e: any) => {
   console.log('d')
@@ -111,10 +106,12 @@ public submitHandler = async (creditOrDebit: string, arg: number) => {
   }
   API.updateBalance(data, data._id)
   API.updateOneEntry(trans, data._id)
-  await this.setState({
-      balance: data.balance
-  })
-  await this.resetInputFields(this.props._id);
+  this.updateBal(data)
+}
+
+public updateBal = (data: any) => {
+  this.setState({ balance: data.balance })
+  this.resetInputFields(this.props._id);
 }
 
 // to avoid submitting the same information twice
@@ -141,7 +138,7 @@ public resetInputFields = (id: string) => {
             delClick={this.props.delClick}
             numChange={this.numInputHandler}
             subtractClick={this.subtractClickHandler}
-            isNumber={this.isNumber}
+            isNumber={NUM.isNumber}
             addClick={this.addClickHandler}
             stringChange={this.stringChangeHandler}
             {...this.state}
