@@ -5,12 +5,14 @@ module.exports = {
 
     // create a new account
      add: function(req, res) {
-      console.log('read controller hit');
+      console.log('add new controller hit');
       console.log(req.body);
+
+
       db.Bank
         .create(req.body)
         .then(dbModel => res.json(dbModel))
-        .catch(err => res.json(error))
+        .catch(err => res.json(err))
       },
 
     // return all information from one account in the database

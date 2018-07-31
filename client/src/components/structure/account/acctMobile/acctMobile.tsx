@@ -8,16 +8,16 @@ import {
 
 interface IProps {
   _id: any;
-  acctNum: number;
-  addClick: any;
-  balance: number;
-  balChange?:any;
+  acctNum: number,
+  addClick: any,
+  balance: number,
+  balChange?:any,
+  change?: any,
   children?: any,
-  delClick?: any;
-  isNumber: any;
-  nameFirst: string;
-  nameLast: string;
-  numChange: any;
+  delClick?: any,
+  nameFirst: string,
+  nameLast: string,
+  press?: any,
   stringChange: any,
   subtractClick: any,
 }
@@ -56,7 +56,7 @@ const AcctMobile = (props: IProps) => {
               <Input
                 type='text'
                 id={props._id}                  
-                onChange={props.stringChange}                  
+                change={props.change}                  
                 itype='input'
                 label='Payed To/From'
                 labelfor='payToInput'
@@ -76,11 +76,11 @@ const AcctMobile = (props: IProps) => {
               <Input
                 type='number'
                 id={props._id}
-                onChange={props.numChange}                  
+                change={props.change}                  
                 itype='input'
                 label='Add Funds'
                 labelfor='addInput'
-                keyPress={props.isNumber}
+                press={props.press}
               />
             </Col>
             <Col size='1' />
@@ -97,11 +97,11 @@ const AcctMobile = (props: IProps) => {
               <Input
                 type="number"
                 id={props._id}
-                onChange={props.numChange}
+                change={props.change}
                 itype='input'
                 label='Subtract Funds'
                 labelfor='subtractInput'
-                keyPress={props.isNumber}
+                press={props.press}
               />
             </Col>
             <Col size='1' />

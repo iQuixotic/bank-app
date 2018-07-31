@@ -7,7 +7,7 @@ router.route('/account/:id')
     .post(personalController.update)
     .delete(personalController.erase)
 
-router.route('/accout/new')    
+router.route('/account/new')    
     .put(personalController.add)
     
 module.exports = router;

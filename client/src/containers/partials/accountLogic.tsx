@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { API, NUM } from "./../../utils";
+import { API, IVAL } from "./../../utils";
 
 import { Loader } from './../../containers';
 
@@ -14,6 +14,8 @@ interface IState {
   subtractInput: number
 }
 
+// re-usable number variable
+let x = 0;
 class Account extends React.Component<{
   _id: string,
   acctNum: number,
@@ -28,8 +30,7 @@ class Account extends React.Component<{
   public state: IState;  
   public constructor(props: any) {
     super(props);
-    this.numInputHandler = this.numInputHandler.bind(this);
-    // this.isNumber = this.isNumber.bind(this)
+    this.changeHandler = this.changeHandler.bind(this);
     this.state = {
       _id: this.props._id,
       addInput: 0,
@@ -43,64 +44,39 @@ class Account extends React.Component<{
     }
   }
 
-// -----------------------------------
-// only allow numbers and .'s in number input field
-// public isNumber = (e:any) => {
-//   const char = (e.which)
-//   char < 48 && char !== 46 || char > 58 && char !== 46 ? 
-//   e.preventDefault() :
-//   console.log('')
-// }
-
-public numFormatHandler = (e: any) => {
-  console.log('d')
-}
-
-// -----------------------------------
-public numInputHandler = (e: any) => {  
-  const myFixed = parseFloat(e.target.value).toFixed(2)
-  this.setState({
-    [e.target.name]: parseFloat(myFixed)
-  })
-}
-  
-// -----------------------------------
-// if payToInput box
-public stringInputHandler = () => {
-  if(this.state.payToInput !== "") {
-    return true
-  }
-  return false;
-}
-
-public stringChangeHandler = (e: any) => {
-  this.setState({
-    payToInput: e.target.value
-  })
+// edit state for input boxes, if number field, parse float
+public changeHandler = (e: any) => {
+  const myUniq = e.target.id
+  myUniq.includes('addInput') || myUniq.includes('subtInput') ?
+    this.setState({ [e.target.name]: parseFloat(e.target.value) }) :
+    this.setState({ [e.target.name]: e.target.value })
+    console.log(this.state)
 }
 
 // ----------------------------------- 
 // button click handlers
-public addClickHandler = async () => {
-  this.stringInputHandler() && !isNaN(this.state.addInput) && this.state.addInput > 0 ?
-  this.submitHandler('credit', this.state.addInput) :
-  console.log(this.state.addInput);  
+public addClickHandler = () => {
+  x = this.state.addInput 
+  if(IVAL.stringInputHandler(this.state.payToInput) && !isNaN(x) && x > 0){
+    this.submitHandler('credit', x) 
+  }
 }
 
-public subtractClickHandler = async () => {  
-  this.stringInputHandler() && !isNaN(this.state.subtractInput) && this.state.subtractInput > 0 ?
-  this.submitHandler('debit', -this.state.subtractInput) :
-  console.log(-this.state.subtractInput);  
+public subtractClickHandler = () => {  
+  x = this.state.subtractInput   
+  if(IVAL.stringInputHandler(this.state.payToInput) && !isNaN(x) && x > 0) {
+    this.submitHandler('debit', -x)
+  } 
 }
 
 // on submission
-public submitHandler = async (creditOrDebit: string, arg: number) => {
+public submitHandler = (creditOrDebit: string, arg: number) => {
   const data: any =  {
     _id: this.state._id,
     balance: this.state.balance + arg
   }
   const trans: any =  {
-    ammount: arg,
+    ammount: Math.abs(arg),
     party: this.state.payToInput,
     type: creditOrDebit
   }
@@ -123,7 +99,16 @@ public resetInputFields = (id: string) => {
   addInput.value = ''
   subtInput.value = ''
   paymentInput.value = ''
+  this.resetSt('', 0)
 }
+
+  public resetSt = (arg: string, arg2: number) => {
+    this.setState({
+      addInput: arg2,
+      payToInput: arg,
+      subtractInput: arg2,    
+    })
+  }
 
   // -----------------------------------
   public render() {
@@ -136,11 +121,10 @@ public resetInputFields = (id: string) => {
             balance={this.props.balance}
             _id={this.props._id}
             delClick={this.props.delClick}
-            numChange={this.numInputHandler}
+            change={this.changeHandler}
             subtractClick={this.subtractClickHandler}
-            isNumber={NUM.isNumber}
+            press={IVAL.isNumber}
             addClick={this.addClickHandler}
-            stringChange={this.stringChangeHandler}
             {...this.state}
             />}
       </this.props.wrapper>

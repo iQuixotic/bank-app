@@ -6,7 +6,7 @@ import './style.css';
 const Button = (props: any) => {
 
         return(            
-                <button className='btn Button'>{props.children}</button>            
+                <button onClick={props.click} className='btn Button'>{props.children}</button>            
         );
 }
 

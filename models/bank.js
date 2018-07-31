@@ -17,6 +17,9 @@ let BankSchema = new Schema({
     balance: {
         type: Number,
     },
+    initialDeposit: {
+        type: Number
+    },
     transactions: {
         type: Array,
     }

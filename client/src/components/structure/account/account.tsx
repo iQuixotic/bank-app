@@ -7,10 +7,17 @@ import {
 
 
 interface IProps {
-  _id: any;  acctNum: number;  addClick: any;
-  balance: number;  balChange?:any;  children?: any,
-  delClick?: any;  isNumber: any;  nameFirst: string;
-  nameLast: string;  numChange: any;  stringChange: any,
+  _id: any,
+  acctNum: number,
+  addClick: any,
+  balance: number,
+  balChange?:any,
+  change: any, 
+  children?: any,
+  delClick?: any,
+  nameFirst: string,
+  nameLast: string,
+  press?: any,
   subtractClick: any,
 }
 
@@ -46,7 +53,7 @@ const Account = (props: IProps) => {
               <Input
                 type='text'
                 id={`paymentInput ${props._id}`}                                
-                onChange={props.stringChange}                  
+                change={props.change}                  
                 itype='input'
                 label='Payed To/From'
                 labelfor='payToInput'
@@ -64,11 +71,11 @@ const Account = (props: IProps) => {
               <Input
                 type='number'
                 id={`addInput ${props._id}`}
-                onChange={props.numChange}                  
+                change={props.change}                  
                 itype='input'
                 label='Add Funds'
                 labelfor='addInput'
-                keyPress={props.isNumber}
+                press={props.press}
               />
             </Col>
             <Col size='sm-1' />
@@ -87,11 +94,11 @@ const Account = (props: IProps) => {
               <Input
                 type="number"
                 id={`subtInput ${props._id}`}                
-                onChange={props.numChange}
+                change={props.change}
                 itype='input'
                 label='Subtract Funds'
                 labelfor='subtractInput'
-                keyPress={props.isNumber}
+                press={props.press}
               />
             </Col>
             <Col size='sm-1' />

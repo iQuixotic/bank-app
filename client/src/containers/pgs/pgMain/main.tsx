@@ -20,7 +20,6 @@ interface IState {
       last: string
     },
   }],
-  deleteID: string,
   full: boolean,
   loading: boolean,
   thisBal: number
@@ -41,7 +40,6 @@ class Main extends React.Component {
           last: 'NA'
         },
       }],
-      deleteID: 'none yet supplied',
       full: true,
       loading: false,
       thisBal: 0,
@@ -60,8 +58,15 @@ class Main extends React.Component {
   }
 
   public deleteAcctHandler = (e: any) => {
-    console.log(this.state.deleteID);
-    this.setState({ deleteID: e.target.id });
+    const delID = e.target.id
+    this.delAcct(delID)
+    this.setState({ loading: true })
+  }
+
+  public delAcct = (id: any) => {    
+    API.removeAccount(id)  
+      .then(() => this.getAllAccts())
+      .catch(err => console.log(err))
   }
 
   public render() {
@@ -79,8 +84,8 @@ class Main extends React.Component {
                 balance = { each.balance }
                 _id = { each._id }
                 delClick = { this.deleteAcctHandler }
-                // loading={this.state.loading}
-                {...this.state} {...this.props}
+                loading={this.state.loading}
+                // {...this.state} 
             />
               )
             )

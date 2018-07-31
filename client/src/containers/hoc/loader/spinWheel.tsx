@@ -19,18 +19,16 @@ const Loader: any = (WrappedComponent: any) => {
                 loading: this.props.loading,
             }
 
-            this.componentDidMount = () => {
-                console.log('these are state', this.state)
-                console.log('props', this.props)
-                console.log('noothing')
-            }
+            // this.componentDidMount = () => {
+            //     console.log('these are state', this.state)
+            //     console.log('props', this.props)
+            //     console.log('noothing')
+            // }
 
             this.componentWillReceiveProps = (nextProps: any) => {
-                this.setState({ loading: !this.state.loading })
-                // const loading: boolean = this.state.loading;
-                console.log('this is nextprops', nextProps)
-                console.log('these are props', this.props)
-                console.log('this state ', this.state)         
+                console.log(nextProps)
+                console.log(nextProps.loading)
+                this.setState({ loading: nextProps.loading })
             }
 
             // this.componentWillUnmount = () => {

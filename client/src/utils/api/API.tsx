@@ -15,6 +15,12 @@ export default {
         return axios.get('/admin');
     },
 
+    // READ to check for duplicate account numbers
+    // getAcctNums: () => {
+    //     console.log('API route for reading acct numbers');        
+    //     return axios.get('/admin/acctNumbers');
+    // },
+
     // UPDATE the balance of one account
     updateBalance: (data:IRoutes, id: IRoutes) => {
         console.log('API route for updating balance hit');
@@ -30,9 +36,9 @@ export default {
 // -------------------------------------------------------------------------
 
     // CREATE one new account
-    createOneAccount: (data: IRoutes) => {
-        console.log('API route /account/:id CREATE hit');        
-        return axios.put('/personal/account/new');
+    createNewAccount: (data: IRoutes) => {
+        console.log('API route /account/new CREATE hit');        
+        return axios.put('/personal/account/new', data);
     },
     
     // READ and retrieve all information from one account
@@ -54,5 +60,6 @@ export default {
     },
 
 // -------------------------------------------------------------------------
+
 
 };
