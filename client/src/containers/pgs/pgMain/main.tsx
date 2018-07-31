@@ -103,7 +103,7 @@ class Main extends React.Component {
                 _id = { each._id }
                 delClick = { this.deleteAcctHandler }
                 // loading={this.state.loading}
-                {...this.state} 
+                // {...this.state} 
             />
               )
             )

@@ -11,4 +11,9 @@ export default {
         console.log(myNum)
         return myNum;
     },
+
+    // need a random num generator for ids in transactions
+
+    // need a buble sort checker for uniqueness
+    
 };
