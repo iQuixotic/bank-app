@@ -5,7 +5,9 @@ const personalController = require('../controllers/personal');
 router.route('/account/:id')
     .get(personalController.read)
     .post(personalController.update)
-    .delete(personalController.erase)
+
+router.route('/account/cd/:id')    
+    .post(personalController.erase)
 
 router.route('/account/new')    
     .put(personalController.add)

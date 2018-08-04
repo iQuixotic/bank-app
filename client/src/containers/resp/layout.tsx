@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // import components
 import { Backdrop, Burger,  Sidedrawer, Toolbar } from "./../../components";
 
-import { MQ } from "./../../containers";
+import { Loader, MQ } from "./../../containers";
 
 
 // import { MOBILE } from "./../../utils";
@@ -35,8 +35,6 @@ class Layout extends Component<IProps, IState> {
   public sideDrawerToggle() {
     const toggle: boolean = !this.state.sideDrawerOpen
     this.setState({ sideDrawerOpen: toggle })
-    // console.log(this.state.sideDrawerOpen)
-  // console.log((<MQ upperLimit={1000}>{false}</MQ>).props.children) 
   }
 
   public render() {
@@ -61,4 +59,4 @@ class Layout extends Component<IProps, IState> {
   }
 }
 
-export default Layout;
+export default Loader(Layout);

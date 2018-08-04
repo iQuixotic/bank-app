@@ -3,6 +3,7 @@ import * as React from "react";
 // import containers
 import { Account, Layout, MQ } from "../../../containers";
 
+// import components
 import { Acct, AcctMobile, Container, Div } from "../../../components";
 
 // import utils
@@ -71,7 +72,7 @@ class Main extends React.Component {
 
   public render() {
     return (
-      <Layout>
+      <Layout {...this.state}>
       <div className='Main'>
       <MQ lowerLimit={751}>
           {this.state.allAccts.map(each => (
@@ -84,8 +85,6 @@ class Main extends React.Component {
                 balance = { each.balance }
                 _id = { each._id }
                 delClick = { this.deleteAcctHandler }
-                loading={this.state.loading}
-                // {...this.state} 
             />
               )
             )

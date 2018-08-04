@@ -1,3 +1,10 @@
+.credit, .debit {
+    color: red;
+    font-size: 2rem;
+    float: right;
+    width: 2%;
+}
+
 .Line {
     text-decoration: none;
 }
@@ -33,13 +40,6 @@
 
 .Line-party {
     width: 50%;
-}
-
-.Line-delete {
-    color: red;
-    font-size: 2rem;
-    float: right;
-    width: 2%;
 }
 
 .Line-delete:hover {

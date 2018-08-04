@@ -37,10 +37,16 @@ module.exports = {
 
     // delete a single record (credit or debit) from a single account 
     erase: function(req, res) {
+      // console.log('erase hit')
+      console.log(req.params.id)
+      console.log(req.body)
+      console.log(req.body.trans_id)
       db.Bank
-        .findByIdAndUpdate(req.params.id, {$pull:  {transactions: req.body}})
+        .findByIdAndUpdate(req.params.id, {$pull: {transactions: { transaction_id: req.body.trans_id }}}, {safe: true, upsert: true})  
         .then(dbModel => res.json(dbModel))
         .catch(err => res.json(err))
     }
+    //.findByIdAndUpdate(req.params.id,
+      // {$pull: {transactions: { transaction_id: req.body.trans_id }}}, {safe: true, upsert: true})
 
 }

@@ -54,9 +54,9 @@ export default {
     },
 
     // DELETE one credit/debit entry from one account
-    removeOneEntry: (id: IRoutes) => {
+    removeOneEntry: (data: IRoutes, id: IRoutes) => {
         console.log('API route /account/:id DELETE hit');        
-        return axios.delete('/personal/account/' + id);
+        return axios.post('/personal/account/cd/' + id, data);
     },
 
 // -------------------------------------------------------------------------

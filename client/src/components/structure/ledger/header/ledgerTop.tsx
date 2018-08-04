@@ -2,8 +2,6 @@ import * as React from "react";
 
 import { Row } from '../../../../components';
 
-import { Loader } from '../../../../containers';
-
 interface IProps {
     acctNum: number, 
     balance: number,
@@ -32,4 +30,4 @@ const LedgerTop = (props: IProps) => {
   );
 }
 
-export default Loader(LedgerTop);
+export default LedgerTop;

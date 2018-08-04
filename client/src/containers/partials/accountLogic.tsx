@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { API, IVAL } from "./../../utils";
 
-import { Loader } from './../../containers';
+// import { Loader } from './../../containers';
 
 
 interface IState {
@@ -19,7 +19,6 @@ let x = 0;
 class Account extends React.Component<{
   _id: string,
   acctNum: number,
-  allAccts: any,
   delClick?: any,
   balance: number,
   nameFirst: string,
@@ -50,7 +49,6 @@ public changeHandler = (e: any) => {
   myUniq.includes('addInput') || myUniq.includes('subtInput') ?
     this.setState({ [e.target.name]: parseFloat(e.target.value) }) :
     this.setState({ [e.target.name]: e.target.value })
-    console.log(this.state)
 }
 
 // ----------------------------------- 
@@ -78,6 +76,7 @@ public submitHandler = (creditOrDebit: string, arg: number) => {
   const trans: any =  {
     ammount: Math.abs(arg),
     party: this.state.payToInput,
+    transaction_id: Date.now(),
     type: creditOrDebit
   }
   API.updateBalance(data, data._id)
@@ -132,4 +131,4 @@ public resetInputFields = (id: string) => {
   }
 }
     
-export default Loader(Account);
+export default Account;

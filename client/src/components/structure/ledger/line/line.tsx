@@ -1,12 +1,11 @@
 import React from "react";
 
-import { Loader } from '../../../../containers'
-
 import './style.css';
 
 interface IProps {
+    _id: string,
     ammount: number, 
-    cd: string,
+    cd: any,
     del: any,
     party: string,
     trans: string
@@ -14,7 +13,7 @@ interface IProps {
 
 const Line = (props: IProps) => {
     return(
-        <div className='Line' {...props}>
+        <div className='Line'>
             <ul className={
                 props.cd ? 
                 'Line_Credit' :
@@ -23,10 +22,10 @@ const Line = (props: IProps) => {
                 <li className="Line-type">{props.trans}</li>
                 <li className="Line-ammount">{props.ammount}</li>
                 <li className="Line-party">{props.party}</li>
-                <li onClick={props.del} className="Line-delete">X</li>
+                <li onClick={props.del}  id={props._id} className={props.cd ? "credit": "debit"}>X</li>
             </ul>            
         </div>
     );
 }
 
-export default Loader(Line);
+export default Line;

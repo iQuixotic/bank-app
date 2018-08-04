@@ -2,7 +2,16 @@ import React from "react";
 
 import './style.css';
 
-const Header = (props: any) => {
+interface IProps {
+    _id: string,
+    acctNum: number,
+    delClick: any,
+    nameFirst: string,
+    nameLast: string,
+    path?: any,    
+}
+
+const Header = (props: IProps) => {
     return(
         <div className='Header'>
             <a href={props.path}>
