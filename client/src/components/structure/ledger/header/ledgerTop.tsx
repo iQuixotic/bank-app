@@ -24,7 +24,7 @@ const LedgerTop = (props: IProps) => {
         </div> 
         </Row>
         <div className="LedgerTop_Balance">
-            {props.balance}
+            ${props.balance}
         </div> 
     </div>
   );

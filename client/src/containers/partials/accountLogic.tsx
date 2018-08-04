@@ -76,7 +76,7 @@ public submitHandler = (creditOrDebit: string, arg: number) => {
   const trans: any =  {
     ammount: Math.abs(arg),
     party: this.state.payToInput,
-    transaction_id: Date.now(),
+    transaction_id: Date.now().toString(),
     type: creditOrDebit
   }
   API.updateBalance(data, data._id)

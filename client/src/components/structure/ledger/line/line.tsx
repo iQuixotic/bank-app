@@ -4,7 +4,7 @@ import './style.css';
 
 interface IProps {
     _id: string,
-    ammount: number, 
+    ammount: any, 
     cd: any,
     del: any,
     party: string,
@@ -20,7 +20,7 @@ const Line = (props: IProps) => {
                 'Line_Debit'
             }> 
                 <li className="Line-type">{props.trans}</li>
-                <li className="Line-ammount">{props.ammount}</li>
+                <li id={`line ${props._id}`} className="Line-ammount">{parseFloat(props.ammount).toFixed(2)}</li>
                 <li className="Line-party">{props.party}</li>
                 <li onClick={props.del}  id={props._id} className={props.cd ? "credit": "debit"}>X</li>
             </ul>            

@@ -18,3 +18,8 @@
     float: right;
     color: red;
 }
+
+.Header_Delete:hover {
+   cursor: pointer;
+   font-weight: bolder;
+}

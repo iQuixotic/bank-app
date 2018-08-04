@@ -7,8 +7,6 @@ module.exports = {
      add: function(req, res) {
       console.log('add new controller hit');
       console.log(req.body);
-
-
       db.Bank
         .create(req.body)
         .then(dbModel => res.json(dbModel))
@@ -30,23 +28,22 @@ module.exports = {
       console.log(req.params.id);
       console.log(req.body);
       db.Bank
-        .findByIdAndUpdate(req.params.id, {$push:  {transactions: req.body}}, {new: true})
+        .findByIdAndUpdate(req.params.id, 
+        {$push: {transactions: req.body}}, {new: true})
         .then(dbModel => res.json(dbModel))
         .catch(err => res.json(err))
     },
 
     // delete a single record (credit or debit) from a single account 
     erase: function(req, res) {
-      // console.log('erase hit')
-      console.log(req.params.id)
-      console.log(req.body)
-      console.log(req.body.trans_id)
+      console.log('this is what made it to erase', req.body)
       db.Bank
-        .findByIdAndUpdate(req.params.id, {$pull: {transactions: { transaction_id: req.body.trans_id }}}, {safe: true, upsert: true})  
+        .findByIdAndUpdate(req.params.id,
+        {$pull: {transactions: 
+        { transaction_id: req.body.trans_id }}}, 
+        {safe: true, upsert: true})  
         .then(dbModel => res.json(dbModel))
         .catch(err => res.json(err))
     }
-    //.findByIdAndUpdate(req.params.id,
-      // {$pull: {transactions: { transaction_id: req.body.trans_id }}}, {safe: true, upsert: true})
 
 }

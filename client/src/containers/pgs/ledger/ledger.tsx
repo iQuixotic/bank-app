@@ -29,6 +29,7 @@ interface IState {
   }],
 }
 
+let newData: any = 8;
 class Ledger extends React.Component {
   public state: IState;
   public constructor(props: any) {
@@ -49,10 +50,8 @@ class Ledger extends React.Component {
       type: '',
   }],
 }
-
 this.delLineHandler = this.delLineHandler.bind(this)
   }
-
   public componentWillMount() {
       this.setState({ loading: true })
       const myProps: any = this.props
@@ -66,7 +65,7 @@ this.delLineHandler = this.delLineHandler.bind(this)
     this.setState({
         _id: arg._id,
         acct: arg.acct,
-        balance: (arg.balance).toFixed(2),
+        balance: parseFloat(arg.balance).toFixed(2),
         loading: false,
         name: {
             first: arg.name.first,
@@ -74,34 +73,60 @@ this.delLineHandler = this.delLineHandler.bind(this)
         },
         transactions: arg.transactions
     })
+    console.log(this.state)
   }
 
   public delLineHandler = (e: any) => {    
-      const data: any =  {
-        _id: this.state._id,
-        balance: this.state.balance, 
-        trans_id: e.target.id,
-        type: e.target.className 
+    const domEl: any = document.getElementById(`line ${e.target.id}`)
+    const data: any =  {
+      _id: this.state._id,        
+      balance: this.state.balance, 
+      trans_id: e.target.id,
+      type: e.target.className 
+    }      
+    this.speedUpdater(data.trans_id)
+    // API.removeOneEntry(data, data._id)
+    data.balance = parseFloat(data.balance)
+    data.type === 'credit' ?
+    this.creditRemover(data, data._id, domEl) :
+    this.debitRemover(data, data._id, domEl)
+  }
+
+  public speedUpdater = (delID: string) => {
+    const t: any = this.state.transactions
+    for (let i = 0; i < t.length; i++) {
+      const obj = t[i];
+      if (delID.indexOf(obj.transaction_id) !== -1) {
+        t.splice(i, 1)
+        i--
       }
-      console.log(data)
-      API.removeOneEntry(data, data._id)
-    // API.updateBalance(data, data._id)
-    //   .then(() => this.setState({
-    //     balance: this.state.balance
-    //   }))
-    // console.log(data)
-    // console.log('this.delLineHandler', e.target.id)
+    }
+    this.setState({ transactions: t })
+    console.log(this.state.transactions)
   }
 
-  public debitRemover = (arg: object, id: string) => {
-    console.log('debitRover', arg, id)
-    // API.removeOneEntry(arg, data._id)
-
+  public debitRemover = (arg: any, id: string, domEl: any) => {
+    const bal: number = arg.balance + parseFloat(domEl.innerHTML)
+    newData = {      
+      balance: bal
+    }
+    this.setState({ balance: bal.toFixed(2) }) 
+    this.ledgerUpdater(newData, id)
   }
 
-  public creditRemover = (arg: object, id: string) => {
-    console.log('CREDITRover', arg, id)
-    // API.removeOneEntry(arg, data._id)
+  public creditRemover = (arg: any, id: string, domEl: any) => {
+    const bal: number = arg.balance - parseFloat(domEl.innerHTML)
+    newData = {      
+      balance: bal
+    }
+    this.setState({ balance: bal.toFixed(2) }) 
+    this.ledgerUpdater(newData, id)
+  }
+
+  public ledgerUpdater = (arg: any, id: any) => {
+    API.updateBalance(arg, id)
+    API.grabOneAccount(id)
+    console.log(this.state)
   }
 
   public render() {

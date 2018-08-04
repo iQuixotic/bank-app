@@ -5,6 +5,11 @@
     width: 2%;
 }
 
+.credit:hover, .debit:hover {
+    cursor: pointer;
+    font-weight: bolder;
+}
+
 .Line {
     text-decoration: none;
 }
@@ -40,9 +45,5 @@
 
 .Line-party {
     width: 50%;
-}
-
-.Line-delete:hover {
-    font-weight: bolder;
 }
 
