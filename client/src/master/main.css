@@ -10,6 +10,14 @@ a:hover {
   color: rgb(53, 207, 53);
 }
 
+/* .positive {
+
+} */
+
+.negative {
+  color: red;
+}
+
 @media only screen and (max-width: 995px) {
   /* For tablet: */
   

@@ -5,6 +5,7 @@ import {
     Input, Row,     
 } from '../../../../components';
 
+import { NUM } from '../../../../utils';
 
 interface IProps {
   _id: any;
@@ -41,8 +42,12 @@ const AcctMobile = (props: IProps) => {
           {/* Account Balance */}
       <Row>
             <div className='Mobile_Balance'>
-              Balance: <span id='Mobile_Balance'>
-              ${props.balance.toFixed(2)}</span>
+              Balance: <span className={props.balance >= 0 ? 'positive' : 'negative'}
+              id='Mobile_Balance'>
+              {props.balance >= 0  ? 
+               `$ ${NUM.withCommas(props.balance.toFixed(2))}` : `
+              - $ ${NUM.withCommas(Math.abs(props.balance).toFixed(2))} ` 
+              }</span>
             </div>
             </Row>
 

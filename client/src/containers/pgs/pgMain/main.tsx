@@ -49,6 +49,9 @@ class Main extends React.Component {
       this.setState({ loading: true })
       this.getAllAccts()
     }    
+     this.componentWillMount = () => {    
+    console.log('heh')
+  }
   }
 
   public getAllAccts = () => {

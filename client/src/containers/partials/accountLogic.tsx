@@ -54,17 +54,30 @@ public changeHandler = (e: any) => {
 // ----------------------------------- 
 // button click handlers
 public addClickHandler = () => {
-  x = this.state.addInput 
-  if(IVAL.stringInputHandler(this.state.payToInput) && !isNaN(x) && x > 0){
+  x = this.state.addInput     
+  if(this.validInputAlerts(x, 'credit')) { 
     this.submitHandler('credit', x) 
   }
 }
 
 public subtractClickHandler = () => {  
-  x = this.state.subtractInput   
-  if(IVAL.stringInputHandler(this.state.payToInput) && !isNaN(x) && x > 0) {
-    this.submitHandler('debit', -x)
-  } 
+  x = this.state.subtractInput     
+    if(this.validInputAlerts(x, 'debit')) { 
+    this.submitHandler('debit', -x) 
+  }
+} 
+
+public validInputAlerts = (t: any, arg: string) => {
+  if(!IVAL.stringInputHandler(this.state.payToInput)) {
+    window.alert('Please fill out the payed to/ payed from input field to continue.')
+    return false;
+  } if (isNaN(t) || t === null) { 
+    console.log(t)
+    window.alert(`Please fill out the ${arg} input field with a valid amount (numbers and decimals only).`)
+    return false;
+  } else {
+  return true; 
+  }
 }
 
 // on submission
@@ -85,7 +98,7 @@ public submitHandler = (creditOrDebit: string, arg: number) => {
 }
 
 public updateBal = (data: any) => {
-  this.setState({ balance: data.balance })
+  this.setState({ balance: data.balance }) 
   this.resetInputFields(this.props._id);
 }
 
