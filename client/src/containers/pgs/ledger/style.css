@@ -1,16 +1,18 @@
 .Ledger {
     font-size: 2rem;
     padding: 16rem 0 5rem;
+    width: 100%;
 }
 
-.Ledger-CDs:nth-child(2) {
-    color: green;
+.Ledger_Credits_Debits {
+    margin: 20px 0;
+    padding-top: 10px;
+    border-top: 3px solid rgb(53, 207, 53);
 }
 
 @media screen and (max-width: 750px) {
 
     .Ledger {
-        /* padding: 0; */
         align-items: center;
     }
 

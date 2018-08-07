@@ -17,7 +17,7 @@ const Loader: any = (WrappedComponent: any) => {
                 loading: this.props.loading,
             }
             this.componentWillReceiveProps = (nextProps: any) => {
-                this.setState({ loading:true})
+                this.setState({ loading: nextProps.loading })
             }
         }
 

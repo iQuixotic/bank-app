@@ -5,7 +5,7 @@ import * as React from "react";
 import { Container, LedgerTop, Line } from "../../../components";
 
 // import containers
-import { Layout } from "../../../containers";
+import { Layout, MQ } from "../../../containers";
 
 import { API } from "../../../utils";
 
@@ -15,6 +15,7 @@ interface IState {
   _id: string,
   acct: number,
   balance: number,
+  initialDeposit: number,
   loading: boolean,
   name: {
     first: string,
@@ -28,6 +29,7 @@ interface IState {
   }],
 }
 
+
 let newData: any = 8;
 class Ledger extends React.Component {
   public state: IState;
@@ -37,6 +39,7 @@ class Ledger extends React.Component {
   _id: 'NA',
   acct: 0,
   balance: 0,
+  initialDeposit: 0,
   loading: false,
   name: {
     first: 'NA',
@@ -65,6 +68,7 @@ this.delLineHandler = this.delLineHandler.bind(this)
         _id: arg._id,
         acct: arg.acct,
         balance: parseFloat(arg.balance).toFixed(2),
+        initialDeposit: parseFloat(arg.initialDeposit).toFixed(2),
         loading: false,
         name: {
             first: arg.name.first,
@@ -83,7 +87,6 @@ this.delLineHandler = this.delLineHandler.bind(this)
       type: e.target.className 
     }      
     this.speedUpdater(data.trans_id)
-    // API.removeOneEntry(data, data._id)
     data.balance = parseFloat(data.balance)
     data.type === 'credit' ?
     this.creditRemover(data, data._id, domEl) :
@@ -126,6 +129,21 @@ this.delLineHandler = this.delLineHandler.bind(this)
   }
 
   public render() {
+    const transactionsMapper: any = (
+      <div className='Ledger-CDs'>
+        {this.state.transactions.map(each => (
+          <Line 
+            key={each.transaction_id}
+            _id={each.transaction_id}
+            cd={each.type === 'credit'}
+            trans={each.type}
+            ammount={each.ammount}
+            party={each.party} 
+            del={this.delLineHandler}
+          />
+        ) ) }
+       </div>
+    )
   return (
     <Layout {...this.state}>
         <Container>
@@ -135,23 +153,21 @@ this.delLineHandler = this.delLineHandler.bind(this)
                 lastName={this.state.name.last}
                 balance={this.state.balance}
                 acctNum={this.state.acct}
+                initial={this.state.initialDeposit}
                 />
-               
+                  <MQ lowerLimit={995}>
                     <Container>
-                        <div className='Ledger-CDs'>
-                        {this.state.transactions.map(each => (
-                            <Line 
-                                key={each.transaction_id}
-                                _id={each.transaction_id}
-                                cd={each.type === 'credit'}
-                                trans={each.type}
-                                ammount={each.ammount}
-                                party={each.party} 
-                                del={this.delLineHandler}
-                                />
-                              ) ) }
-                        </div>
-                    </Container>                
+                      <div className='Ledger_Credits_Debits'>
+                        {transactionsMapper}
+                      </div>
+                    </Container>   
+                  </MQ> 
+
+                   <MQ upperLimit={994}>
+                      <div className='Ledger_Credits_Debits'>
+                        {transactionsMapper}
+                      </div>
+                  </MQ>                       
             </div>
         </Container>
     </Layout>

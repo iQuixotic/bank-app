@@ -1,22 +1,22 @@
 #first {
-  /* position: absolute; */
+  position: absolute;
   width: 100%;
   height: 100%;
-  align-items: center;
-  text-align: center;
-  vertical-align: middle;
+  left: 45%;
+  top: 45%;
 }
 
 .Loader {
-  position: relative;
+  /* position: relative; */
   color: rgb(92, 151, 180);  
-  font-size: 1.7rem;
+  font-size: 20px;
   font-weight: 500;  
   line-height: 100%;
-    width: 9rem;
+    width: 5%;
     height: 9rem;
     vertical-align: middle;
     text-align: center;
+    align-items: center;
   }
 
   .Loader div {
@@ -25,8 +25,9 @@
   }
 
   .Loader div:after {
+    text-align: center;
     content: " ";
-    display: block;
+    /* display: block; */
     position: absolute;
     width: 6px;
     height: 6px;
@@ -111,3 +112,14 @@
       transform: rotate(360deg);
     }
   }
+
+  @media only screen and (max-width: 500px) {
+    #first {
+      left: 40%;
+      top: 40%;
+    }
+    
+    .Loader {
+      font-size: 17px;
+    }
+} 

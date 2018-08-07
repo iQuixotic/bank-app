@@ -17,33 +17,31 @@
 .Line_Credit, 
 .Line_Debit {
     display: flex;
+    font-size: 2rem;
+    padding: 3px 8px;
     list-style-type: none;
 }
 
 .Line_Debit {
-    background-color: rgb(255, 227, 227);
+    background-color: rgb(255, 239, 239);
     color: rgb(0, 0, 0);
 }
 
 .Line_Credit { 
-    background-color: rgba(197, 253, 206, 0.281);
+    background-color: rgba(245, 245, 245, 0.5);
     color: rgb(8, 8, 8);
 }
-/* 
-.Line-ammount, .Line-type, .Line-party {
-
-} */
 
 .Line-ammount {
-    width: 30%;
+    width: 22%;
+    font-weight: 600;
 }
 
-
 .Line-type {
-    width: 20%;
+    width: 18%;
 }
 
 .Line-party {
-    width: 50%;
+    width: 60%;
 }
 

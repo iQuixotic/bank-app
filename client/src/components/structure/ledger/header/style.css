@@ -1,22 +1,93 @@
-/* 
 .LedgerTop {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
 
-} */
+.LedgerTop_Initial {
+    font-size: 2rem;
+}
 
 .LedgerTop_Name {
+    text-decoration: underline solid rgb(53, 207, 53);
     font-weight: 700;
-    font-size: 4rem;
-    display: flex;
-    width: 45%;
+    font-size: 3rem;
+    padding: 0 0 30px 15px;
+    width: 65%;
 }
 
 .LedgerTop_Acct-Num {
-    font-weight: 700;
-    font-size: 3rem;
-    display: flex;
+    font-size: 2rem;
+    width: 33%;
+    text-align: right;
 }
 
 .LedgerTop_Balance {
+    font-size: 2rem;
+    width: 50%;
+    padding-left: 1.5rem;
+}
+
+.balance, .initial-depo {
+    font-size: 2.5rem;
+    background-color: rgba(245, 245, 245, 0.5);
+    margin: 7px 0;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.balance {
     font-weight: 700;
-    font-size: 3rem;
+}
+
+.initial-depo {
+    font-weight: 600;
+    color: rgb(70, 65, 55);
+}
+
+@media screen and (max-width: 990px) {
+    .LedgerTop_Acct-Num {
+        width: 35%;
+    }    
+
+    .LedgerTop_Name {
+        padding-left: 0px;
+    }
+
+    .LedgerTop_Balance {
+        padding-left: 0px;
+    }
+
+}
+@media screen and (max-width: 400px) {
+    /* For tablet */
+
+    .LedgerTop {
+        padding: 0 10px;
+    }
+
+    .LedgerTop_Name {
+        font-size: 3rem;
+        padding-left: 5px;
+    }
+
+    .LedgerTop_Balance {
+        width: 100%;
+        padding-left: 1rem;
+    }
+
+    .LedgerTop_Initial {
+        padding: 1rem;
+    }    
+
+    .initial-depo {
+        padding: 1px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .balance {
+        padding: 1px;
+        margin-top: 5px;
+    }
+    
 }

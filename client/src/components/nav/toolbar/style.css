@@ -9,11 +9,6 @@
     width: 100%;
 }
 
-/* #Toolbar-Logo {
-    max-height: 100px;
-    max-width: 100px;
-} */
-
 .Toolbar-Main {
     width: 100%;
     top: 0;
@@ -25,7 +20,7 @@
 
 .Toolbar-Nav {
     position: relative;
-    margin-top: 5.9rem;
+    margin-top: 6rem;
     z-index: 105;
     width: 22%;
     float: right;
@@ -48,15 +43,11 @@
     }
 
     .Toolbar-Nav a {
-        padding: 15px 15px 11px;
+        padding: 15px 15px 12px;
     }
 }
 
 @media only screen and (max-width: 768px) {
-/* 
-    .Toolbar-Nav a {
-        padding: 15px 15px 12px;
-    } */
 
     .Toolbar-Nav {
         width: 25%;

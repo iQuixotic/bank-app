@@ -1,6 +1,6 @@
 .Sidedrawer {
     height: 100%;
-    width: 70%;
+    width: 75%;
     position: fixed;
     background-color: rgb(236, 236, 236);
     justify-content: space-between;
@@ -53,13 +53,15 @@
 
 #Sidedrawer_ul li:hover {
     border-bottom: 2px solid rgb(53, 207, 53);
+    color: whitesmoke;    
+    background-color: rgba(0, 0, 0, 0.35);
 }
 
-#Sidedrawer_ul li a:hover,
+/* #Sidedrawer_ul li a:hover,
 #Sidedrawer_ul li a:active {
     color: whitesmoke;
     background-color: rgba(0, 0, 0, 0.35);
-}
+} */
 
 .Sidedrawer nav {
     width: 100%;
