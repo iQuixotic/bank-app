@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {
-    NavItems,
+     NavItems,
 } from '../../../components'
 
 import './style.css';
@@ -19,7 +19,6 @@ const Toolbar = (props: any) => {
                     nav2="New" link2='/new'
                 />
             </div>
-
             {props.children}
         </nav>
     );

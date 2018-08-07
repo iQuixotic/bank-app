@@ -1,6 +1,7 @@
 import * as React from "react";
 
-import {
+import { 
+    Logo,
     NavItems,
 } from '../../../components';
 
@@ -8,12 +9,13 @@ import './style.css';
 
 const Sidedrawer = () => {
     return ( 
-            <div className='Sidedrawer' >
+            <div id='SD' className='Sidedrawer' >
             <nav>
                 <NavItems 
                 nav1="Accounts" link1='/' id='Sidedrawer_ul'
                 nav2="New" link2='/new'  
                 />
+                <Logo id='Sidedrawer-Logo'/>
             </nav>
             </div>
     );

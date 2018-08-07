@@ -1,5 +1,6 @@
 .Hamburger {
-    top: 0;
+    position: relative;
+    top: 5px;
     color: rgba(116, 112, 112, 0.562);
     margin: 5px 15px;
     padding: 5px;

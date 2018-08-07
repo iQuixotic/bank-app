@@ -32,9 +32,19 @@ class Layout extends Component<IProps, IState> {
     this.sideDrawerToggle = this.sideDrawerToggle.bind(this);
   }
 
+  // animates sidedraw to close
   public sideDrawerToggle() {
     const toggle: boolean = !this.state.sideDrawerOpen
-    this.setState({ sideDrawerOpen: toggle })
+    const sd: any = document.getElementById('SD')
+    if(this.state.sideDrawerOpen){
+      sd.className += ' moveOut'
+    setTimeout(() => {
+      this.setState({ sideDrawerOpen: toggle })      
+    }, 1000);
+  } else {
+    this.setState({ sideDrawerOpen: toggle })      
+  }
+
   }
 
   public render() {
@@ -45,8 +55,8 @@ class Layout extends Component<IProps, IState> {
               </MQ>
               <MQ upperLimit={599}>
                 {!this.state.sideDrawerOpen ?                  
-                <div className='mobile-burger'><Burger size='3x' onClick={this.sideDrawerToggle}/></div> :
-                <div onClick={this.sideDrawerToggle}><Sidedrawer/><Backdrop/><Sidedrawer /></div>                            
+                <div className='mobile-burger'><Burger size='4x' onClick={this.sideDrawerToggle}/></div> :
+                <div onClick={this.sideDrawerToggle}><Sidedrawer/><Backdrop/></div>                            
                 }
               </MQ>
               }

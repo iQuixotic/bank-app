@@ -1,3 +1,6 @@
+// export * from brand
+export { default as Building } from './brand/img/building.png';
+export { default as Logo } from './brand/bankLogo';
 
 // export * from structure
 export { default as Acct } from './structure/account/account';

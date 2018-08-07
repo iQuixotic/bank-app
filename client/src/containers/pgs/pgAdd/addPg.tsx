@@ -132,9 +132,7 @@ public resetInputFields = () => {
         </div>
         <div className="Add_Submit-Button">
           <Button click={this.dataHandler} >SUBMIT</Button>
-        </div>
-        
-                
+        </div>               
        
         </div>
         </Container>

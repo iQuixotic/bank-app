@@ -19,6 +19,7 @@
 }
 
 .Header_Delete {
+    font-size: 2rem;
     float: right;
     color: red;
 }
@@ -26,4 +27,23 @@
 .Header_Delete:hover {
    cursor: pointer;
    font-weight: bolder;
+}
+
+@media screen and (max-width: 599px) {
+    .Header {
+        width: 95%;
+    }    
+    .Header_Delete {
+        font-size: 2.5rem;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    /* For large phone/small tablet */
+  
+    .Header {
+        width: 92%;
+    }    
+
 }

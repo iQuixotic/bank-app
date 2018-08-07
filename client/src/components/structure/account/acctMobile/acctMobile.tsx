@@ -36,9 +36,7 @@ const AcctMobile = (props: IProps) => {
           acctNum={props.acctNum}
           delClick={props.delClick}
           />
-      </Row>
-
-    
+      </Row>   
 
           {/* Account Balance */}
       <Row>
@@ -47,8 +45,6 @@ const AcctMobile = (props: IProps) => {
               ${props.balance.toFixed(2)}</span>
             </div>
             </Row>
-      
-
 
               {/* Payed to/from begins here */}
               <Row>
@@ -66,10 +62,6 @@ const AcctMobile = (props: IProps) => {
             </Col>
         <Col size='2'/>
         </Row>
-
-
-
-
 
         {/* Add funds begins here */}
           <Row>
@@ -113,8 +105,6 @@ const AcctMobile = (props: IProps) => {
                 className="Mobile_Subtract-Funds btn">-</button>
             </Col>
           </Row>
-
-
     </div>
   );
 }

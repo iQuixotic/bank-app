@@ -1,7 +1,5 @@
 import * as React from "react";
 
-// import { Layout } from '../../../containers';
-
 import './style.css';
 
 
@@ -18,16 +16,15 @@ const Loader: any = (WrappedComponent: any) => {
             this.state = {
                 loading: this.props.loading,
             }
-
             this.componentWillReceiveProps = (nextProps: any) => {
-                this.setState({ loading: nextProps.loading })
+                this.setState({ loading:true})
             }
-
         }
+
         public render() {
             return (
                 this.state.loading ?
-                <div className="Loader"><div /><div /><div /><div /><div /><div /><div /><div /></div> :
+                <div id='first'><div className="Loader">loading...<div /><div /><div /><div /><div /><div /><div /><div /></div></div> :
                 <WrappedComponent  {...this.state} {...this.props} />
 
             )
