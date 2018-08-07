@@ -29,6 +29,7 @@ const AcctMobile = (props: IProps) => {
       <div className='Mobile_Acct'>
       <Row>
         <Header 
+          path={`id/${props._id}`}
           _id={props._id}
           nameLast={props.nameLast}
           nameFirst={props.nameFirst}
@@ -54,8 +55,8 @@ const AcctMobile = (props: IProps) => {
         <Col size='10'>
             <div className="Mobile_Payed-To">
               <Input
-                type='text'
-                id={props._id}                  
+                type='text'                
+                id={`paymentInput ${props._id}`}                                
                 change={props.change}                  
                 itype='input'
                 label='Payed To/From'
@@ -75,7 +76,7 @@ const AcctMobile = (props: IProps) => {
             <Col size='8'>
               <Input
                 type='number'
-                id={props._id}
+                id={`addInput ${props._id}`}                
                 change={props.change}                  
                 itype='input'
                 label='Add Funds'
@@ -96,7 +97,7 @@ const AcctMobile = (props: IProps) => {
             <Col size='8'>
               <Input
                 type="number"
-                id={props._id}
+                id={`subtInput ${props._id}`}                                
                 change={props.change}
                 itype='input'
                 label='Subtract Funds'

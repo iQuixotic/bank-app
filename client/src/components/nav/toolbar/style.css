@@ -15,6 +15,38 @@
 }
 
 .Toolbar-Nav {
-    width: 30%;
+    width: 22%;
     float: right;
 }
+
+.Toolbar-Nav a {
+    color: white;
+    padding: 17px 17px 8px;
+}
+
+.Toolbar-Nav a:hover, .Toolbar a:active {    
+    border-bottom: 4px solid rgb(53, 207, 53);
+    border-radius: 15px 15px 0 0;
+    background-color: #31558b77;
+}
+
+@media only screen and (max-width: 995px) {
+    .Toolbar-Nav {
+        margin-top: 15px;
+    }
+
+    .Toolbar-Nav a {
+        padding: 15px 15px 11px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+/* 
+    .Toolbar-Nav a {
+        padding: 15px 15px 12px;
+    } */
+
+    .Toolbar-Nav {
+        width: 25%;
+    }
+} 

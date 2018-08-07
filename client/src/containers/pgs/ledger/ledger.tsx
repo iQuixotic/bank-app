@@ -11,7 +11,6 @@ import { API } from "../../../utils";
 
 import './style.css';
 
-
 interface IState {
   _id: string,
   acct: number,
@@ -73,7 +72,6 @@ this.delLineHandler = this.delLineHandler.bind(this)
         },
         transactions: arg.transactions
     })
-    console.log(this.state)
   }
 
   public delLineHandler = (e: any) => {    
@@ -102,7 +100,6 @@ this.delLineHandler = this.delLineHandler.bind(this)
       }
     }
     this.setState({ transactions: t })
-    console.log(this.state.transactions)
   }
 
   public debitRemover = (arg: any, id: string, domEl: any) => {
@@ -111,7 +108,7 @@ this.delLineHandler = this.delLineHandler.bind(this)
       balance: bal
     }
     this.setState({ balance: bal.toFixed(2) }) 
-    this.ledgerUpdater(newData, id)
+    this.ledgerUpdater(arg, id, newData)
   }
 
   public creditRemover = (arg: any, id: string, domEl: any) => {
@@ -120,13 +117,12 @@ this.delLineHandler = this.delLineHandler.bind(this)
       balance: bal
     }
     this.setState({ balance: bal.toFixed(2) }) 
-    this.ledgerUpdater(newData, id)
+    this.ledgerUpdater(arg, id, newData)
   }
 
-  public ledgerUpdater = (arg: any, id: any) => {
-    API.updateBalance(arg, id)
-    API.grabOneAccount(id)
-    console.log(this.state)
+  public ledgerUpdater = (arg: any, id: any, bal: any) => {
+    API.updateBalance(bal, id)
+    API.removeOneEntry(arg, id)
   }
 
   public render() {

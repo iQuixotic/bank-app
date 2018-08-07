@@ -4,20 +4,15 @@ import {
     NavItems,
 } from '../../../components';
 
-
-interface IProps {
-    children?: any,
-    // showing: boolean
-}
-
 import './style.css';
 
-const Sidedrawer = (props: IProps) => {
+const Sidedrawer = () => {
     return ( 
             <div className='Sidedrawer' >
             <nav>
                 <NavItems 
-                nav1="Accounts" link1='/'
+                nav1="Accounts" link1='/' id='Sidedrawer_ul'
+                nav2="New" link2='/new'  
                 />
             </nav>
             </div>

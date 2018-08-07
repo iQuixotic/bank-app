@@ -52,5 +52,3 @@ app.listen(PORT, function() {
 });
  
 
-// const seed = require('./seed_files/seeds');
-// seed.generate();

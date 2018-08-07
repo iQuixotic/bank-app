@@ -2,7 +2,13 @@ html {
   font-size: 10px;
 }
 
+a {
+  text-decoration: none !important;
+}
 
+a:hover {
+  color: rgb(53, 207, 53);
+}
 
 @media only screen and (max-width: 995px) {
   /* For tablet: */
@@ -13,11 +19,11 @@ html {
 
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 599px) {
   /* For mobile-phone: */
   
  html {
-   font-size: 6px;
+   font-size: 7px;
  }
 
 }

@@ -4,13 +4,9 @@ import {
     NavItems,
 } from '../../../components'
 
-interface IProps {
-    children?: string,
-}
-
 import './style.css';
 
-const Toolbar = (props: IProps) => {
+const Toolbar = (props: any) => {
     return (
         <nav className='Toolbar'>
             <div className="Toolbar-Main">
@@ -20,8 +16,7 @@ const Toolbar = (props: IProps) => {
             <div className="Toolbar-Nav">
                 <NavItems
                     nav1="Accounts" link1='/'
-                    nav2="VIP"
-                    nav3="New" link3='/new'
+                    nav2="New" link2='/new'
                 />
             </div>
 
