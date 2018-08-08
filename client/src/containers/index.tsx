@@ -11,6 +11,6 @@ export { default as MQ } from './resp/mediaQuery';
 export { default as Account } from './partials/accountLogic';
 
 // export * from pgs
-export { default as Add } from './pgs/pgAdd/addPg';
+export { default as Add } from './pgs/create/addPg';
 export { default as Ledger } from './pgs/ledger/ledger';
-export { default as Main } from './pgs/pgMain/main';
+export { default as Main } from './pgs/main/main';

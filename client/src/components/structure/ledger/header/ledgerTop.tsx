@@ -19,7 +19,9 @@ const LedgerTop = (props: IProps) => {
     const ledgerTopBalance: any = (
         <div>
             <MQ lowerLimit={760}>Balance: </MQ> 
-            <MQ upperLimit={759}>Bal: </MQ>
+            <MQ upperLimit={759}><span className='tooltip'>Bal:</span> 
+            {/* <span className='tootiptext'>Balance</span> */}
+            </MQ>
             <span className="balance">${props.balance}</span>
         </div> 
     )
@@ -27,7 +29,9 @@ const LedgerTop = (props: IProps) => {
     const ledgerTopInitial: any = (
         <div> 
             <MQ lowerLimit={760}>Initial Deposit: </MQ> 
-            <MQ upperLimit={759}>ID: </MQ>
+            <MQ upperLimit={759}><span className='tooltip'>ID: </span>
+             {/* <span className='tootiptext'>Initial Deposit</span>   */}
+               </MQ>       
             <span className="initial-depo">${props.initial}</span>
         </div>
     )

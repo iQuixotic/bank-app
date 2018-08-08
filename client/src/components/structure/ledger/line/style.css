@@ -35,13 +35,34 @@
 .Line-ammount {
     width: 22%;
     font-weight: 600;
+    overflow: hidden;
 }
 
 .Line-type {
+    overflow: hidden;
     width: 18%;
 }
 
 .Line-party {
+    overflow: hidden;
     width: 60%;
 }
 
+@media screen and (max-width: 400px) {
+    .Line-ammount {
+        width: 27%;
+        font-weight: 600;
+        overflow: hidden;
+    }
+    
+    .Line-type {
+        overflow: hidden;
+        width: 18%;
+    }
+    
+    .Line-party {
+        overflow: hidden;
+        width: 55%;
+    }
+
+}

@@ -27,6 +27,10 @@
   },
   "homepage": "https://github.com/iQuixotic/my-bank-app#readme",
   "dependencies": {
+    "@types/react": "^16.4.8",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-fa": "^4.1.5",
+    "@types/react-router-dom": "^4.3.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",

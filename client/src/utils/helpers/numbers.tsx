@@ -1,21 +1,16 @@
-// import { API } from '../index';
 
+// helpers for dealing with NON-INPUT related number formating and number generation
 export default {
 
-    // generateAcctNum: () => {    
-    //     API.getAcctNums()
-    // },
-
-    returnAcctNum: () => {
+    // returns a (psuedo-random) number with one million possible outcomes
+    returnAcctNum: (): number => {
         const myNum = Math.floor((Math.random() * 999999) + 7000000);
-        console.log(myNum)
         return myNum;
     },
 
-    // need a random num generator for ids in transactions
+    // need a buble sort checker for uniqueness of rando nums
 
-    // need a buble sort checker for uniqueness
-
+    // takes string representation of a float and returns it with 1000s digit comma formating
     withCommas: (arg: string) => {
         const decimal: string = (parseFloat(arg)-parseInt(arg, 10)).toFixed(2).substr(1)
         const str: string = (Math.abs(parseInt(arg, 10))).toString();
@@ -30,7 +25,6 @@ export default {
             }
         }
         const b: any = a.join('')
-        // console.log(b)
         return b+decimal;
     }
     
