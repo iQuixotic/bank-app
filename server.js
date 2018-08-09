@@ -1,11 +1,12 @@
 // external npms
 const express = require('express');
+const path = require('path')
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 
 // database and app (internal)
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const connectMe = process.env.MONGODB_URI || 'mongodb://localhost:27017/bank_db'; 
