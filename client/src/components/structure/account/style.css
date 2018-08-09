@@ -48,7 +48,6 @@
 }
 
 @media screen and (max-width: 995px) {
-    /* For medium tablet */
 
     .card {
         width: 110%;
@@ -65,7 +64,6 @@
 }
 
 @media screen and (max-width: 775px) {
-    /* For medium tablet */
 
     .card {
         width: 105%;
@@ -75,8 +73,6 @@
 }
 
 @media screen and (max-width: 766px) {
-    /* For medium tablet */
-
 
     .Account {
         width: 130%;

@@ -17,14 +17,6 @@
 input:focus::-webkit-input-placeholder {
     color:transparent;
 }
-/* 
-input:invalid {
-    background-color: rgb(250, 232, 232);
-}
-
-input:valid { 
-    background-color: rgb(255, 255, 255);
-} */
 
 input:focus + label, 
 input:valid + label {
@@ -58,7 +50,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 @media screen and (max-width: 995px) {
-    /* For large tablet or laptop */
 
     #Input {
         padding: 0rem;
@@ -71,7 +62,6 @@ input[type=number]::-webkit-outer-spin-button {
 } 
 
 @media screen and (max-width: 750px) {
-    /* For tablet */
 
     #Input {
         padding: 0rem;

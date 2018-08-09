@@ -1,8 +1,6 @@
 import * as React from "react";
 import './style.css';
 
-
-
 const Button = (props: any) => {
 
         return(            

@@ -1,12 +1,10 @@
 import * as React from "react";
-
 import {
     Col, Header,
     Input, Row,     
 } from '../../../components';
-
 import  { NUM } from '../../../utils';
-
+import './style.css';
 
 interface IProps {
   _id: any,
@@ -23,8 +21,7 @@ interface IProps {
   subtractClick: any,
 }
 
-import './style.css';
-
+// sets up the look/structure of each account on main page
 const Account = (props: IProps) => {
     return (
       <div className='card  Account'>

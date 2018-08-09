@@ -1,9 +1,5 @@
 import * as React from "react";
-
-import {
-     NavItems,
-} from '../../../components'
-
+import { NavItems } from '../../../components';
 import './style.css';
 
 const Toolbar = (props: any) => {

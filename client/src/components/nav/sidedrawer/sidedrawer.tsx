@@ -1,12 +1,8 @@
 import * as React from "react";
-
-import { 
-    Logo,
-    NavItems,
-} from '../../../components';
-
+import { Logo, NavItems } from '../../../components';
 import './style.css';
 
+// will be used for mobile devices
 const Sidedrawer = () => {
     return ( 
             <div id='SD' className='Sidedrawer' >

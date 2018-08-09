@@ -3,7 +3,7 @@ import { Icon } from 'react-fa';
 import './style.css';
 
 // hamburger (industry term) icon for opening sidedrawer
-const Burger = (props: any) => {
+const Burger = (props: {size: any, onClick: any }) => {
     return(
     <div>
          <Icon name=" fa-bars" 

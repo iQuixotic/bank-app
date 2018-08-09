@@ -11,7 +11,7 @@ export default {
     // need a buble sort checker for uniqueness of rando nums
 
     // takes string representation of a float and returns it with 1000s digit comma formating
-    withCommas: (arg: string) => {
+    withCommas: (arg: string): string => {
         const decimal: string = (parseFloat(arg)-parseInt(arg, 10)).toFixed(2).substr(1)
         const str: string = (Math.abs(parseInt(arg, 10))).toString();
         const a: any = []

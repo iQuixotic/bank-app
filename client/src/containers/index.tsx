@@ -1,5 +1,3 @@
-
-
 // export * from hoc 
 export { default as Loader } from './HOC/loader/spinWheel';
 

@@ -1,16 +1,7 @@
 import React, { Component } from "react";
-
-// import components
 import { Backdrop, Burger,  Sidedrawer, Toolbar } from "./../../components";
-
 import { Loader, MQ } from "./../../containers";
-
-
-// import { MOBILE } from "./../../utils";
-
-
 import './style.css';
-// import mobile from "../../utils/helpers/mobile";
 
 interface IProps {
   children: any,

@@ -7,7 +7,7 @@ interface IState {
     loading: boolean,
 }
 
-
+// makes spinner appear until page is finished fetching any data it requires
 const Loader: any = (WrappedComponent: any) => {
     return class LoaderHOC extends React.Component<{ loading: boolean }>{
         public state: IState;

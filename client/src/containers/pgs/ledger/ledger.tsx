@@ -1,14 +1,7 @@
-
 import * as React from "react";
-
-// import components
 import { Container, LedgerTop, Line } from "../../../components";
-
-// import containers
 import { Layout, MQ } from "../../../containers";
-
 import { API } from "../../../utils";
-
 import './style.css';
 
 interface IState {
@@ -22,10 +15,10 @@ interface IState {
     last: string
   },
   transactions: [{
-      ammount: number,
-      party: string, 
-      transaction_id: string,
-      type: string
+    ammount: number,
+    party: string,
+    transaction_id: string,
+    type: string
   }],
 }
 
@@ -34,65 +27,71 @@ let newData: any = 8;
 class Ledger extends React.Component {
   public state: IState;
   public constructor(props: any) {
-  super(props);
+    super(props);
     this.state = {
-  _id: 'NA',
-  acct: 0,
-  balance: 0,
-  initialDeposit: 0,
-  loading: false,
-  name: {
-    first: 'NA',
-    last: 'NA'
-  },
-  transactions: [{
-      ammount: 0,
-      party: '',
-      transaction_id: '0',
-      type: '',
-  }],
-}
-this.delLineHandler = this.delLineHandler.bind(this)
-  }
-  public componentWillMount() {
+      _id: 'NA',
+      acct: 0,
+      balance: 0,
+      initialDeposit: 0,
+      loading: false,
+      name: {
+        first: 'NA',
+        last: 'NA'
+      },
+      transactions: [{
+        ammount: 0,
+        party: '',
+        transaction_id: '0',
+        type: '',
+      }],
+    }
+    this.delLineHandler = this.delLineHandler.bind(this)
+
+    // pass id from page url param to grabOneAccount() and getInitialData()
+    // once recieved, use data from api calls to set initial state
+    this.componentWillMount = () => {
       this.setState({ loading: true })
       const myProps: any = this.props
       API.grabOneAccount(myProps.match.params.id)
-        .then((res) => this.getInitialState(res.data))
+        .then((res) => this.getInitialData(res.data))
         .then(() => this.setState({ loading: false }))
-        .catch(err => console.log(err));
+        .catch(err => { throw(err) });
+    }
   }
 
-  public getInitialState = (arg: any) => {
+  // get data needed from account
+  public getInitialData = (arg: any) => {
     this.setState({
-        _id: arg._id,
-        acct: arg.acct,
-        balance: parseFloat(arg.balance).toFixed(2),
-        initialDeposit: parseFloat(arg.initialDeposit).toFixed(2),
-        loading: false,
-        name: {
-            first: arg.name.first,
-            last: arg.name.last,
-        },
-        transactions: arg.transactions
+      _id: arg._id,
+      acct: arg.acct,
+      balance: parseFloat(arg.balance).toFixed(2),
+      initialDeposit: parseFloat(arg.initialDeposit).toFixed(2),
+      loading: false,
+      name: {
+        first: arg.name.first,
+        last: arg.name.last,
+      },
+      transactions: arg.transactions
     })
   }
 
-  public delLineHandler = (e: any) => {    
+  // controlls event when an X is clicked
+  public delLineHandler = (e: any) => {
     const domEl: any = document.getElementById(`line ${e.target.id}`)
-    const data: any =  {
-      _id: this.state._id,        
-      balance: this.state.balance, 
+    const data: any = {
+      _id: this.state._id,
+      balance: this.state.balance,
       trans_id: e.target.id,
-      type: e.target.className 
-    }      
+      type: e.target.className
+    }
     this.speedUpdater(data.trans_id)
     data.balance = parseFloat(data.balance)
     data.type === 'credit' ?
-    this.creditRemover(data, data._id, domEl) :
-    this.debitRemover(data, data._id, domEl)
+      this.creditRemover(data, data._id, domEl) :
+      this.debitRemover(data, data._id, domEl)
   }
 
+  // updates state of transacions array
   public speedUpdater = (delID: string) => {
     const t: any = this.state.transactions
     for (let i = 0; i < t.length; i++) {
@@ -105,75 +104,84 @@ this.delLineHandler = this.delLineHandler.bind(this)
     this.setState({ transactions: t })
   }
 
+  // prepares data for ledgerUpdater if debit
   public debitRemover = (arg: any, id: string, domEl: any) => {
     const bal: number = arg.balance + parseFloat(domEl.innerHTML)
-    newData = {      
+    newData = {
       balance: bal
     }
-    this.setState({ balance: bal.toFixed(2) }) 
+    this.setState({ balance: bal.toFixed(2) })
     this.ledgerUpdater(arg, id, newData)
   }
 
+  // prepares data for ledgerUpdater if credit
   public creditRemover = (arg: any, id: string, domEl: any) => {
     const bal: number = arg.balance - parseFloat(domEl.innerHTML)
-    newData = {      
+    newData = {
       balance: bal
     }
-    this.setState({ balance: bal.toFixed(2) }) 
+    this.setState({ balance: bal.toFixed(2) })
     this.ledgerUpdater(arg, id, newData)
   }
 
+  // call API (axios) functions to remove a transaction 
+  // from the database and update the balance
   public ledgerUpdater = (arg: any, id: any, bal: any) => {
     API.updateBalance(bal, id)
     API.removeOneEntry(arg, id)
   }
 
   public render() {
+
+    // mapper variable to keep return statement skinny
     const transactionsMapper: any = (
       <div className='Ledger-CDs'>
         {this.state.transactions.map(each => (
-          <Line 
+          <Line
             key={each.transaction_id}
             _id={each.transaction_id}
             cd={each.type === 'credit'}
             trans={each.type}
             ammount={each.ammount}
-            party={each.party} 
+            party={each.party}
             del={this.delLineHandler}
           />
-        ) ) }
-       </div>
+        ))}
+      </div>
     )
-  return (
-    <Layout {...this.state}>
+
+    return (
+      <Layout {...this.state}>
         <Container>
-            <div className="Ledger">            
-              <LedgerTop 
-                firstName={this.state.name.first}
-                lastName={this.state.name.last}
-                balance={this.state.balance}
-                acctNum={this.state.acct}
-                initial={this.state.initialDeposit}
-                />
-                  <MQ lowerLimit={995}>
-                    <Container>
-                      <div className='Ledger_Credits_Debits'>
-                        {transactionsMapper}
-                      </div>
-                    </Container>   
-                  </MQ> 
+          <div className="Ledger">
+            <LedgerTop
+              firstName={this.state.name.first}
+              lastName={this.state.name.last}
+              balance={this.state.balance}
+              acctNum={this.state.acct}
+              initial={this.state.initialDeposit}
+            />
 
-                   <MQ upperLimit={994}>
-                      <div className='Ledger_Credits_Debits'>
-                        {transactionsMapper}
-                      </div>
-                  </MQ>                       
-            </div>
+            <MQ lowerLimit={995}>
+              <Container>
+                <div className='Ledger_Credits_Debits'>
+                  {transactionsMapper}
+                </div>
+              </Container>
+            </MQ>
+
+            <MQ upperLimit={994}>
+              <div className='Ledger_Credits_Debits'>
+                {transactionsMapper}
+              </div>
+            </MQ>
+            
+          </div>
         </Container>
-    </Layout>
+      </Layout>
+    );
+  }
+}
 
-  );
-}
-}
 export default Ledger;
 

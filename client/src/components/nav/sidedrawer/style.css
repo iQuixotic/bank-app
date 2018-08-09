@@ -11,13 +11,6 @@
     animation: moveIn 1s;
 }
 
-/* .Sidedrawer_Ani-In {
-    animation: moveOut .5s ease-out;
-}
-
-.Sidedrawer_Ani-Out {
-    animation: moveIn .5s ease-out;
-} */
 #Sidedrawer-Logo {
     position: relative;
     left: 0;
@@ -56,12 +49,6 @@
     color: whitesmoke;    
     background-color: rgba(0, 0, 0, 0.35);
 }
-
-/* #Sidedrawer_ul li a:hover,
-#Sidedrawer_ul li a:active {
-    color: whitesmoke;
-    background-color: rgba(0, 0, 0, 0.35);
-} */
 
 .Sidedrawer nav {
     width: 100%;

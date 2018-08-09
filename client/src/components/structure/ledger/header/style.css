@@ -28,23 +28,58 @@
 }
 
 .balance, .initial-depo {
+    position: relative;
+    z-index: 1;
     font-size: 2.5rem;
     background-color: rgba(245, 245, 245, 0.5);
-    margin: 7px 0;
+    right: 0;
     padding: 5px;
     border-radius: 8px;
 }
 
 .balance {
+    position: relative;
+    z-index: 1;
     font-weight: 700;
 }
 
 .initial-depo {
+    position: relative;
+    z-index: 1;
     font-weight: 600;
     color: rgb(70, 65, 55);
 }
 
+#LedgerTopBalance,
+#LedgerTopInitial {
+    position: relative;
+    z-index: 1;
+} 
+
+.my-tooltip {
+    position: absolute;
+    z-index: 3;
+}
+
+.my-tooltip-text {
+    position: relative;
+    padding: 4px;
+    left: 19px;
+    bottom: 25px;
+    z-index: 2;
+    background-color: black;  
+    color: white; 
+    border-radius: 8px;
+    visibility: hidden;
+}
+
+.my-tooltip:hover + 
+.my-tooltip-text {
+    visibility: visible;
+}
+
 @media screen and (max-width: 990px) {
+
     .LedgerTop_Acct-Num {
         width: 35%;
     }    
@@ -56,38 +91,29 @@
     .LedgerTop_Balance {
         padding-left: 0px;
     }
-
 }
 
-@media screen and (max-width: 759px) {
+@media screen and (max-width: 760px) {
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
+    .balance {
+        right: 30px;
+        bottom: 4px;
+    }
+
+    .initial-depo {
+        right: 80px;
+        bottom: 4px;
+    }
 }
 
-.tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: -5px;
-    right: 105%;
-}
+@media screen and (max-width: 600px) { 
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
+    .initial-depo {
+        right: 70px;
+    }
 }
 
 @media screen and (max-width: 400px) {
-    /* For tablet */
 
     .LedgerTop {
         padding: 0 10px;

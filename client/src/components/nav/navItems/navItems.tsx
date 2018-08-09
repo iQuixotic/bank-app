@@ -1,13 +1,11 @@
 import * as React from "react";
+import './style.css';
 
 interface IProps {
     id?: string,
     nav1: string, link1: string,
     nav2?: string, link2?: string
 }
-
-import './style.css';
-
 
 const NavItems = (props: IProps) => {
     return (

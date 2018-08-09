@@ -11,7 +11,6 @@ export default {
 
     // READ all accounts from the database
     grabAccounts: () => {
-        console.log('API route /admin/ hit');
         return axios.get('/admin');
     },
 
@@ -23,43 +22,34 @@ export default {
 
     // UPDATE the balance of one account
     updateBalance: (data:IRoutes, id: IRoutes) => {
-        console.log('API route for updating balance hit');
         return axios.post('/admin/' + id, data);
     },
 
     // DELETE one account from database
-    removeAccount: (id: IRoutes) => {
-        console.log('API route /allAccountsData/:id hit');        
+    removeAccount: (id: IRoutes) => {      
         return axios.delete('/admin/' + id);
     },
 
 // -------------------------------------------------------------------------
 
     // CREATE one new account
-    createNewAccount: (data: IRoutes) => {
-        console.log('API route /account/new CREATE hit');        
+    createNewAccount: (data: IRoutes) => {     
         return axios.put('/personal/account/new', data);
     },
     
     // READ and retrieve all information from one account
-    grabOneAccount: (id: IRoutes) => {
-        console.log('API route /account/:id READ hit');        
+    grabOneAccount: (id: IRoutes) => {        
         return axios.get('/personal/account/' + id);
     },
 
     // UPDATE one account with a new credit/debit
-    updateOneEntry: (data: IRoutes, id: IRoutes) => {
-        console.log('API route /account/:id UPDATE hit');        
+    updateOneEntry: (data: IRoutes, id: IRoutes) => {       
         return axios.post('/personal/account/' + id, data);
     },
 
     // DELETE one credit/debit entry from one account
-    removeOneEntry: (data: IRoutes, id: IRoutes) => {
-        console.log('API route /account/:id DELETE hit');        
+    removeOneEntry: (data: IRoutes, id: IRoutes) => {     
         return axios.post('/personal/account/cd/' + id, data);
     },
-
-// -------------------------------------------------------------------------
-
 
 };

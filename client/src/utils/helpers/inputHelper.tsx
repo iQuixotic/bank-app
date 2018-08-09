@@ -2,9 +2,8 @@ import { IVAL } from '../index';
 
 // helpers for front-end input validation
 export default {
-    
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-  // HELPERS FOR NUMBER INPUTS 
+
+  // FOR NUMBER INPUTS 
     
     // only allow numbers and .'s in number input field
     isNumber: (e:any): any => {
@@ -21,9 +20,8 @@ export default {
         (val.substr(0, val.indexOf(".")) + val.substr(val.indexOf("."), 2))
         : val
     },
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-  // HELPERS FOR STRING INPUTS
+ 
+  // FOR STRING INPUTS
 
     // verify that field has a value
     stringInputHandler: (str: string): boolean => {
