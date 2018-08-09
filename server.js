@@ -40,10 +40,11 @@ app.use((error, res) => {
 // connect to the database bank_db on the server
 mongoose.connect(connectMe, {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
-// , { useNewUrlParser: true }
+
+// !important I WAS using  | app.use(express.static("client/build"))  and it cause a blank page |
 // - - - - - - - - - - - - - - - - - - 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use('/static', express.static(path.join(__dirname, 'client/build')));
 }
 
 // start server
