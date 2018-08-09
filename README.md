@@ -27,6 +27,7 @@ nodejs | used for backend js |
 Typescript| front-end language | 
 React | library | 
 MongoDB | database | 
+axios | simple communication between front-end and back-end |
 yarn | package manager of choice | 
 normalize.css | make css appear consistent across browsers | 
 
@@ -34,7 +35,7 @@ normalize.css | make css appear consistent across browsers |
 
 ### Acknowledgements
 
-In this project, I chose a minimalistic styling scheme. My choice was to focus on showing off various animations, validation functions, and content-formating functions. I also placed heavy emphasis on making the mobile version have a mobile 'feel.' 
+In this project, I chose a minimalistic styling scheme. My choice was to focus on showing off various animations, validation functions, and content-formating functions. I also placed heavy emphasis on making the mobile version have a mobile feel.
 
 <hr>
 

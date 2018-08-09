@@ -5,8 +5,6 @@ module.exports = {
 
     // create a new account
      add: function(req, res) {
-      console.log('add new controller hit');
-      console.log(req.body);
       db.Bank
         .create(req.body)
         .then(dbModel => res.json(dbModel))
@@ -15,7 +13,6 @@ module.exports = {
 
     // return all information from one account in the database
     read: function(req, res) {
-      console.log('add controller hit');
       db.Bank            
         .findById(req.params.id)
         .then((dbModel) => { res.json(dbModel) })
@@ -24,9 +21,6 @@ module.exports = {
 
     // update a single account
     update: function(req, res) {
-      console.log('update controller hit');
-      console.log(req.params.id);
-      console.log(req.body);
       db.Bank
         .findByIdAndUpdate(req.params.id, 
         {$push: {transactions: req.body}}, {new: true})
@@ -36,7 +30,6 @@ module.exports = {
 
     // delete a single record (credit or debit) from a single account 
     erase: function(req, res) {
-      console.log('this is what made it to erase', req.body)
       db.Bank
         .findByIdAndUpdate(req.params.id,
         {$pull: {transactions: 

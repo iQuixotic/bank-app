@@ -1,4 +1,4 @@
-// external
+// external npms
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -8,8 +8,8 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const connectMe = process.env.MONGODB_URI || 'mongodb://localhost/bank_db'; 
-const db = require('./models');
+const connectMe = process.env.MONGODB_URI || 'mongodb://localhost:27017/bank_db'; 
+// const db = require('./models');
 const routes = require('./routes');
 
 // use morgan, bodyParser, cors, routes
@@ -21,14 +21,14 @@ app.use(routes);
 
 // - - - - - - - - - - - - - - - - - - 
 // error handling
-app.use((req, res, next) => {
+app.use((next) => {
     const error = new Error('Not found');
     error.status = 404;
     next(error);
 });
 
 // render error to the page for easier troubleshooting
-app.use((error, req, res, next) => {
+app.use((error, res) => {
   res.status(error.status || 500);
   res.json({
     error: {
@@ -38,7 +38,7 @@ app.use((error, req, res, next) => {
 });
 
 // connect to the database bank_db on the server
-mongoose.connect(connectMe);
+mongoose.connect(connectMe, {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 // , { useNewUrlParser: true }
 // - - - - - - - - - - - - - - - - - - 
