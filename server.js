@@ -9,9 +9,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3001;
-const connectMe = process.env.MONGODB_URI || 'mongodb://localhost:27017/bank_db'; 
-// const db = require('./models');
+const connectMe = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/bank_db'; 
 const routes = require('./routes');
+console.log(process.env.MONGOLAB_URI)
 
 // use morgan, bodyParser, cors, routes
 app.use(cors());

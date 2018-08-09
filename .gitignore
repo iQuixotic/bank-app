@@ -61,5 +61,6 @@ typings/
 .next
 
 #seeds
-seed_files/
+safe/
+linkBuilder
 seeds
