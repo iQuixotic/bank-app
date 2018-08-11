@@ -1,4 +1,4 @@
-// external npms
+// external packages
 const express = require('express');
 const path = require('path')
 const bodyParser = require('body-parser');
@@ -45,11 +45,13 @@ mongoose.Promise = global.Promise;
 // !important I WAS using  | app.use(express.static("client/build"))  and it cause a blank page |
 // - - - - - - - - - - - - - - - - - - 
 if (process.env.NODE_ENV === "production") {
-  app.use('/static', express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static("client/build"))
+  // app.use('/static', express.static(path.join(__dirname, 'client/build')));
 }
+console.log(NODE_ENV)
 
 // start server
-app.listen(PORT, function() {
+app.listen(PORT, () => {
   console.log("Server listening on: http://localhost:" + PORT);
 });
  
