@@ -7,6 +7,8 @@ This project is a mobile-responsive, MERN, full-stack, app for managing an imagi
 
 link to project here: 
 
+https://bank-manager-app-9485.herokuapp.com/
+
 ### About
 
 From the main page (accounts), you can see all of the accounts currently available for manipulation. To credit an account, type a value into the pay to/from box and an ammount in either the 'Add Funds' or 'Subtract Funds' input. By clicking on the button corresponding to the input, you can add or subtract funds accordingly. Clicking on an 'X' will remove an account and all of its contents from the database. 
@@ -39,4 +41,4 @@ In this project, I chose a minimalistic styling scheme. My choice was to focus o
 
 <hr>
 
-
+ ![image](client/public/img/zenithScreenShot.png)
