@@ -46,7 +46,7 @@ mongoose.Promise = global.Promise;
 // - - - - - - - - - - - - - - - - - - 
 if (process.env.NODE_ENV === "production") {
   // app.use(express.static("client/build"))
-  app.use('/static', express.static(path.join(__dirname, 'client/build')));
+  app.use('/static', express.static(path.join(__dirname, '/client/build')));
 }
 console.log(process.env.NODE_ENV)
 
