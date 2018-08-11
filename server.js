@@ -9,12 +9,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-
-const mine = require('./safe/linkBuilder')
-const connectMe = process.env.MONGOLAB_URI || mine.mine
-console.log(mine.mine)
-//  'mongodb://localhost:27017/bank_db'; 
+const connectMe = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/bank_db'; 
 const routes = require('./routes');
 console.log(process.env.MONGOLAB_URI)
 
