@@ -45,8 +45,8 @@ mongoose.Promise = global.Promise;
 // !important I WAS using  | app.use(express.static("client/build"))  and it cause a blank page |
 // - - - - - - - - - - - - - - - - - - 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"))
-  // app.use('/static', express.static(path.join(__dirname, 'client/build')));
+  // app.use(express.static("client/build"))
+  app.use('/static', express.static(path.join(__dirname, 'client/build')));
 }
 console.log(process.env.NODE_ENV)
 
