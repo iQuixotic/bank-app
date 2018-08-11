@@ -9,7 +9,12 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3001;
-const connectMe = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/bank_db'; 
+
+
+const mine = require('./safe/linkBuilder')
+const connectMe = process.env.MONGOLAB_URI || mine.mine
+console.log(mine.mine)
+//  'mongodb://localhost:27017/bank_db'; 
 const routes = require('./routes');
 console.log(process.env.MONGOLAB_URI)
 
@@ -20,6 +25,23 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 app.use(routes);
 
+
+// connect to the database bank_db on the server
+mongoose.connect(connectMe, {useNewUrlParser: true});
+mongoose.Promise = global.Promise;
+
+// !important I WAS using  | app.use(express.static("client/build"))  and it cause a blank page |
+// - - - - - - - - - - - - - - - - - - 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, '/client/build')));
+}
+// console.log(path.join(__dirname, '/client/build'))
+
+// start server
+app.listen(PORT, () => {
+  console.log("Server listening on: http://localhost:" + PORT);
+});
+ 
 // - - - - - - - - - - - - - - - - - - 
 // error handling
 app.use((next) => {
@@ -37,22 +59,3 @@ app.use((error, res) => {
     }
   })
 });
-
-// connect to the database bank_db on the server
-mongoose.connect(connectMe, {useNewUrlParser: true});
-mongoose.Promise = global.Promise;
-
-// !important I WAS using  | app.use(express.static("client/build"))  and it cause a blank page |
-// - - - - - - - - - - - - - - - - - - 
-if (process.env.NODE_ENV === "production") {
-  // app.use(express.static("client/build"))
-  app.use('/static/', express.static(path.join(__dirname, 'client/build')));
-}
-console.log(process.env.NODE_ENV)
-
-// start server
-app.listen(PORT, () => {
-  console.log("Server listening on: http://localhost:" + PORT);
-});
- 
-

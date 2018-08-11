@@ -9,7 +9,7 @@ router.use('/personal', personalRoutes);
 
 // if no routes are hit, go to react app
 router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../client/public/index.html"));
+    res.sendFile(path.join(__dirname, '../client/build'));
 });
 
 module.exports = router;
